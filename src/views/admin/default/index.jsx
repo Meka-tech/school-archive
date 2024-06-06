@@ -26,8 +26,10 @@ const Dashboard = () => {
           `${BaseUrl}/school/search?name=${searchInput}&page=${currentPage}&limit=10`
         );
         setSearched(true);
-        setSearchResults(res.data.schools);
+        setSearchResults(res.data.results);
         setTotalPages(res.data.totalPages);
+
+        console.log(res.data);
       } catch (e) {
       } finally {
         setSearching(false);
@@ -54,14 +56,14 @@ const Dashboard = () => {
         />
       </div>
       <div className="h-[550px] w-full">
-        {searchResults.length === 0 && !searching && searched && (
+        {searchResults?.length === 0 && !searching && searched && (
           <div className="flex h-full w-full flex-col items-center justify-center">
             <MdSearchOff size={50} className="mb-2 text-red-500" />
             <p className="text-3xl font-thin text-red-500">No school found !</p>
           </div>
         )}
 
-        {searchResults.length > 0 && !searching && searched && (
+        {searchResults?.length > 0 && !searching && searched && (
           <>
             <p className="mb-2 ml-2 font-medium text-gray-800">
               Search results:

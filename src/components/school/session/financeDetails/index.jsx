@@ -74,14 +74,14 @@ const FinanceDetails = () => {
                       type="number"
                       value={detail.first_term}
                       placeholder={"nil"}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                     />
                   </td>
                   <td class="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={detail.second_term}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                     />
                   </td>
@@ -89,7 +89,7 @@ const FinanceDetails = () => {
                     <input
                       type="number"
                       value={detail.third_term}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                     />
                   </td>
@@ -103,7 +103,7 @@ const FinanceDetails = () => {
                       }`}
                       placeholder={"nil"}
                       disabled={true}
-                      className="focus:outline-none disabled:bg-white"
+                      className="w-20 border-none focus:outline-none disabled:bg-white"
                     />
                   </td>
                 </tr>

@@ -33,7 +33,7 @@ const StaffData = ({ data, update }) => {
               No of teaching Staff :
             </p>
             <input
-              className="w-10 rounded-lg px-2 py-1 font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none"
+              className="w-10 rounded-lg border-none px-2 py-1 font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none"
               value={staffdata.teaching_staffs}
               name="teaching_staffs"
               onChange={handleChange}
@@ -44,7 +44,7 @@ const StaffData = ({ data, update }) => {
               No of non-teaching Staff :
             </p>
             <input
-              className="w-10 rounded-lg px-2 py-1 font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none"
+              className="w-10 rounded-lg border-none px-2 py-1 font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none"
               value={staffdata.non_teaching_staffs}
               onChange={handleChange}
               name="non_teaching_staffs"
@@ -55,7 +55,7 @@ const StaffData = ({ data, update }) => {
               No of permanent Staff :
             </p>
             <input
-              className="w-10 rounded-lg px-2 py-1 font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none"
+              className="w-10 rounded-lg border-none px-2 py-1 font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none"
               value={staffdata.permanent_staffs}
               onChange={handleChange}
               name="permanent_staffs"
@@ -66,7 +66,7 @@ const StaffData = ({ data, update }) => {
               No of contract Staff :
             </p>
             <input
-              className="w-10 rounded-lg px-2 py-1 font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none"
+              className="w-10 rounded-lg border-none px-2 py-1 font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none"
               value={staffdata.contract_staffs}
               onChange={handleChange}
               name="contract_staffs"

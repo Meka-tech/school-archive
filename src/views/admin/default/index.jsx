@@ -1,4 +1,4 @@
-import { MdSearch, MdSearchOff } from "react-icons/md";
+import { MdClear, MdSearch, MdSearchOff } from "react-icons/md";
 import SchoolCard from "components/card/SchoolCard";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
@@ -7,6 +7,7 @@ import "react-responsive-pagination/themes/classic.css";
 
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Spinner } from "flowbite-react";
 
 const Dashboard = () => {
   const BaseUrl = process.env.REACT_APP_BASE_URL;
@@ -18,56 +19,99 @@ const Dashboard = () => {
   const [searched, setSearched] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const SearchSchool = async () => {
-      setSearching(true);
-      try {
-        const res = await axios.get(
-          `${BaseUrl}/school/search?name=${searchInput}&page=${currentPage}&limit=10`
-        );
-        setSearched(true);
-        setSearchResults(res.data.results);
-        setTotalPages(res.data.totalPages);
-
-        console.log(res.data);
-      } catch (e) {
-      } finally {
-        setSearching(false);
-      }
-    };
-    if (searchInput) {
-      SearchSchool();
-    } else {
-      setSearchResults([]);
+  const GetAllSchools = async () => {
+    setSearching(true);
+    try {
+      const res = await axios.get(
+        `${BaseUrl}/school?page=${currentPage}&limit=10`
+      );
+      setSearched(false);
+      setSearchResults(res.data.results);
+      setTotalPages(res.data.totalPages);
+    } catch (e) {
+    } finally {
+      setSearching(false);
     }
-  }, [searchInput, currentPage, BaseUrl]);
+  };
+  useEffect(() => {
+    GetAllSchools();
+  }, []);
+
+  const SearchSchool = async () => {
+    setSearching(true);
+    try {
+      const res = await axios.get(
+        `${BaseUrl}/school/search?name=${searchInput}&page=${currentPage}&limit=10`
+      );
+      setSearched(true);
+      setSearchResults(res.data.results);
+      setTotalPages(res.data.totalPages);
+    } catch (e) {
+      setSearchResults([]);
+      setTotalPages(0);
+    } finally {
+      setSearching(false);
+    }
+  };
+
+  const CancelSearch = () => {
+    setSearchResults([]);
+    setTotalPages(0);
+    GetAllSchools();
+    setSearchInput("");
+  };
+
+  useEffect(() => {
+    if (searchInput.length > 0) {
+      SearchSchool();
+    }
+  }, [currentPage, BaseUrl]);
 
   return (
     <div>
-      <div className="mb-6 ml-auto mr-auto mt-5 flex h-fit w-1/2 items-center rounded-lg bg-white px-3 py-2">
-        <div className="mr-2 text-gray-500">
-          <MdSearch size={20} />
+      <div className="mb-6 mt-5 flex items-center  justify-center ">
+        <div className="flex h-fit w-1/2 items-center rounded-lg bg-white px-3 py-2">
+          <div className="mr-2 text-gray-500">
+            <MdSearch size={20} />
+          </div>
+          <input
+            placeholder="Search School Archives"
+            className="w-full  border-none bg-none outline-none"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
         </div>
-        <input
-          placeholder="Search School Archives"
-          className="w-full  border-none bg-none outline-none"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
+        <button
+          className=" ml-3 flex items-center rounded-xl bg-navy-700 px-5 py-2 text-base font-medium text-white transition duration-200 hover:bg-navy-800 active:bg-navy-900 disabled:bg-gray-300 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
+          onClick={SearchSchool}
+          disabled={searchInput.length === 0}
+        >
+          Search
+        </button>
       </div>
+
       <div className="h-[550px] w-full">
-        {searchResults?.length === 0 && !searching && searched && (
-          <div className="flex h-full w-full flex-col items-center justify-center">
-            <MdSearchOff size={50} className="mb-2 text-red-500" />
-            <p className="text-3xl font-thin text-red-500">No school found !</p>
+        {/* loading */}
+        {searching && (
+          <div className="flex h-full items-center justify-center text-center">
+            <Spinner size={"xl"} />
           </div>
         )}
 
-        {searchResults?.length > 0 && !searching && searched && (
+        {searchResults.length > 0 && !searching && searched ? (
           <>
-            <p className="mb-2 ml-2 font-medium text-gray-800">
-              Search results:
-            </p>
+            <div className="flex w-full items-center justify-between">
+              <p className="mb-2 ml-2 font-medium text-gray-800">
+                Search results: {searchResults.length}
+              </p>
+              <button
+                className="flex items-center rounded-xl bg-red-300 px-2 py-2 text-base font-medium text-white transition duration-200 hover:bg-red-500 active:bg-navy-900 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
+                onClick={CancelSearch}
+              >
+                <MdClear />
+              </button>
+            </div>
+
             <div className="mb-2 grid h-5/6 w-full grid-cols-4 flex-wrap justify-between gap-x-4 overflow-auto">
               {searchResults.map((school, i) => {
                 return (
@@ -88,6 +132,33 @@ const Dashboard = () => {
               onPageChange={setCurrentPage}
             />
           </>
+        ) : searchResults?.length > 0 && !searching && !searched ? (
+          <>
+            <div className="mb-2 grid h-5/6 w-full grid-cols-4 flex-wrap justify-between gap-x-4 overflow-auto">
+              {searchResults.map((school, i) => {
+                return (
+                  <SchoolCard
+                    key={i}
+                    name={school.name}
+                    location={school.location}
+                    telephone={school.telephone}
+                    email={school.email}
+                    id={school._id}
+                  />
+                );
+              })}
+            </div>
+            <ResponsivePagination
+              current={currentPage}
+              total={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          </>
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center">
+            <MdSearchOff size={50} className="mb-2 text-red-500" />
+            <p className="text-3xl font-thin text-red-500">No school found !</p>
+          </div>
         )}
       </div>
       <div className="flex w-full justify-end">

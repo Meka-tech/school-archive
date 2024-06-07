@@ -5,12 +5,15 @@ import { MdAdd, MdArrowDropDown, MdDelete } from "react-icons/md";
 import Term from "../term";
 import FinanceDetails from "./financeDetails";
 import axios from "axios";
+import { Modal } from "flowbite-react";
+import DeleteModal from "components/modals/delete modal";
 
 const Session = ({ data, reset }) => {
   const [open, setOpen] = useState(false);
   const [sessionName, setSessionName] = useState(data.session);
   const [newTerm, setNewTerm] = useState("");
   const BaseUrl = process.env.REACT_APP_BASE_URL;
+  const [openModal, setOpenModal] = useState(false);
 
   const DeleteSession = async () => {
     try {
@@ -47,6 +50,19 @@ const Session = ({ data, reset }) => {
   };
   return (
     <div className="my-8 w-full">
+      <Modal
+        dismissible
+        size={"lg"}
+        show={openModal}
+        onClose={() => setOpenModal(false)}
+      >
+        <DeleteModal
+          headerText={"Are you sure ?"}
+          bodyText={"The session data can not be recovered if deleted"}
+          close={() => setOpenModal(false)}
+          action={DeleteSession}
+        />
+      </Modal>
       <div className="flex ">
         <button
           className="flex w-fit items-center rounded-lg bg-navy-900 px-2 py-1 text-lg font-medium text-white"
@@ -67,7 +83,7 @@ const Session = ({ data, reset }) => {
         </button>
         <button
           className=" ml-2 flex h-fit w-fit cursor-pointer items-center rounded-lg bg-red-300 p-3 text-lg font-medium text-white duration-150 hover:bg-red-500"
-          onClick={DeleteSession}
+          onClick={() => setOpenModal(true)}
         >
           <MdDelete />
         </button>

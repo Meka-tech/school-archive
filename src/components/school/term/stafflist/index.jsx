@@ -97,7 +97,7 @@ const StaffList = ({ data, update }) => {
                         type="text"
                         value={staff.name}
                         placeholder={"nil"}
-                        className="w-28 focus:outline-none"
+                        className="w-28 border-none focus:outline-none"
                         onChange={(e) => handleInputChange(index, e)}
                         name="name"
                       />
@@ -110,7 +110,7 @@ const StaffList = ({ data, update }) => {
                         )
                           .toISOString()
                           .slice(0, 10)}
-                        className="focus:outline-none"
+                        className="border-none focus:outline-none"
                         placeholder={"Pick a date"}
                         onChange={(e) => {
                           const { name, value } = e.target;
@@ -131,7 +131,7 @@ const StaffList = ({ data, update }) => {
                     <td class="px-3 py-4 text-gray-800">
                       <input
                         value={staff.academic_qualification}
-                        className="w-24  focus:outline-none"
+                        className="w-24  border-none focus:outline-none"
                         placeholder={"nil"}
                         onChange={(e) => handleInputChange(index, e)}
                         name="academic_qualification"
@@ -142,7 +142,7 @@ const StaffList = ({ data, update }) => {
                         value={staff.area_of_employment}
                         placeholder={"nil"}
                         onChange={(e) => handleInputChange(index, e)}
-                        className=" w-24 focus:outline-none disabled:bg-white"
+                        className=" w-24 border-none focus:outline-none disabled:bg-white"
                         name="area_of_employment"
                       />
                     </td>
@@ -152,7 +152,7 @@ const StaffList = ({ data, update }) => {
                         value={staff.salary}
                         placeholder={"nil"}
                         onChange={(e) => handleInputChange(index, e)}
-                        className=" w-20 focus:outline-none disabled:bg-white"
+                        className=" w-20 border-none focus:outline-none disabled:bg-white"
                         name="salary"
                       />
                     </td>
@@ -161,7 +161,7 @@ const StaffList = ({ data, update }) => {
                         value={staff.religious_denomination}
                         placeholder={"nil"}
                         onChange={(e) => handleInputChange(index, e)}
-                        className=" w-24 focus:outline-none disabled:bg-white"
+                        className=" w-24 border-none focus:outline-none disabled:bg-white"
                         name="religious_denomination"
                       />
                     </td>
@@ -170,7 +170,7 @@ const StaffList = ({ data, update }) => {
                         value={staff.gender}
                         placeholder={"female"}
                         onChange={(e) => handleInputChange(index, e)}
-                        className="w-14 focus:outline-none disabled:bg-white"
+                        className="w-14 border-none focus:outline-none disabled:bg-white"
                         name="gender"
                       />
                     </td>
@@ -180,7 +180,7 @@ const StaffList = ({ data, update }) => {
                         value={staff.phone}
                         placeholder={"nil"}
                         onChange={(e) => handleInputChange(index, e)}
-                        className=" w-28 focus:outline-none disabled:bg-white"
+                        className=" w-28 border-none focus:outline-none disabled:bg-white"
                         name="phone"
                       />
                     </td>
@@ -239,21 +239,21 @@ const StaffList = ({ data, update }) => {
                   type="number"
                   value={""}
                   placeholder={"nil"}
-                  className="w-28 focus:outline-none"
+                  className="w-28 border-none focus:outline-none"
                 />
               </td>
               <td class="px-3 py-4 text-gray-800">
                 <input
                   type="number"
                   value={""}
-                  className="focus:outline-none"
+                  className="border-none focus:outline-none"
                   placeholder={"nil"}
                 />
               </td>
               <td class="px-3 py-4 text-gray-800">
                 <input
                   value={""}
-                  className="w-24  focus:outline-none"
+                  className="w-24  border-none focus:outline-none"
                   placeholder={"nil"}
                 />
               </td>
@@ -270,21 +270,21 @@ const StaffList = ({ data, update }) => {
                   type="number"
                   value={""}
                   placeholder={"nil"}
-                  className="w-28 focus:outline-none"
+                  className="w-28 border-none focus:outline-none"
                 />
               </td>
               <td class="px-3 py-4 text-gray-800">
                 <input
                   type="number"
                   value={""}
-                  className="focus:outline-none"
+                  className="border-none focus:outline-none"
                   placeholder={"nil"}
                 />
               </td>
               <td class="px-3 py-4 text-gray-800">
                 <input
                   value={""}
-                  className="w-24  focus:outline-none"
+                  className="w-24  border-none focus:outline-none"
                   placeholder={"nil"}
                 />
               </td>

@@ -273,14 +273,14 @@ const ClassData = ({ data, update }) => {
                       type="number"
                       value={""}
                       placeholder={"nil"}
-                      className="focus:outline-none"
+                      className="border-none focus:border-white focus:outline-none"
                     />
                   </td>
                   <td class="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.males}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(e, classDatum.class, "males")
@@ -291,7 +291,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.females}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(e, classDatum.class, "females")
@@ -306,7 +306,7 @@ const ClassData = ({ data, update }) => {
                       }`}
                       placeholder={"nil"}
                       disabled={true}
-                      className="focus:outline-none disabled:bg-white"
+                      className="border-none focus:outline-none disabled:bg-white"
                     />
                   </td>
                 </tr>
@@ -355,7 +355,7 @@ const ClassData = ({ data, update }) => {
                       type="number"
                       value={classDatum.catholic_boys}
                       placeholder={"nil"}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       onChange={(e) =>
                         handleInputChange(e, classDatum.class, "catholic_boys")
                       }
@@ -365,7 +365,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.muslim_boys}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(e, classDatum.class, "muslim_boys")
@@ -376,7 +376,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.catholic_girls}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(e, classDatum.class, "catholic_girls")
@@ -389,7 +389,7 @@ const ClassData = ({ data, update }) => {
                       value={classDatum.muslim_girls}
                       placeholder={"nil"}
                       disabled={true}
-                      className="focus:outline-none disabled:bg-white"
+                      className="border-none focus:outline-none disabled:bg-white"
                       onChange={(e) =>
                         handleInputChange(e, classDatum.class, "muslim_girls")
                       }
@@ -399,7 +399,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.christian_boys}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(e, classDatum.class, "christian_boys")
@@ -410,7 +410,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.christian_girls}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(
@@ -462,7 +462,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.males_on_scholarship}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(
@@ -477,7 +477,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.females_on_scholarship}
-                      className="focus:outline-none"
+                      className="border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(
@@ -497,7 +497,7 @@ const ClassData = ({ data, update }) => {
                       }`}
                       placeholder={"nil"}
                       disabled={true}
-                      className="focus:outline-none disabled:bg-white"
+                      className="border-none focus:outline-none disabled:bg-white"
                     />
                   </td>
                 </tr>

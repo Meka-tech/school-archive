@@ -6,6 +6,8 @@ import ClassData from "./classdata";
 import StaffData from "./staffdata";
 import StaffList from "./stafflist";
 import axios from "axios";
+import DeleteModal from "components/modals/delete modal";
+import { Modal } from "flowbite-react";
 
 const Term = ({ data, reset }) => {
   const [open, setOpen] = useState(false);
@@ -14,6 +16,7 @@ const Term = ({ data, reset }) => {
   const [classData, setClassData] = useState(data.classes);
   const [staffData, setStaffData] = useState(data.staffData);
   const [staffList, setStaffList] = useState(data.staffList);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleUpdateClass = (data) => {
     setClassData(data);
@@ -72,6 +75,19 @@ const Term = ({ data, reset }) => {
   }, [classData, staffData, staffList]);
   return (
     <div className="ml-10 mt-4 w-11/12">
+      <Modal
+        dismissible
+        size={"lg"}
+        show={openModal}
+        onClose={() => setOpenModal(false)}
+      >
+        <DeleteModal
+          headerText={"Are you sure ?"}
+          bodyText={"The term data can not be recovered if deleted"}
+          close={() => setOpenModal(false)}
+          action={DeleteTerm}
+        />
+      </Modal>
       <div className="mb-8 flex">
         <button
           className="flex w-fit items-center rounded-lg bg-navy-900 px-3 py-1 text-lg font-medium text-white"
@@ -92,7 +108,7 @@ const Term = ({ data, reset }) => {
         </button>
         <button
           className=" ml-2 flex h-fit w-fit cursor-pointer items-center rounded-lg bg-red-300 p-3 text-lg font-medium text-white duration-150 hover:bg-red-500"
-          onClick={DeleteTerm}
+          onClick={() => setOpenModal(true)}
         >
           <MdDelete />
         </button>

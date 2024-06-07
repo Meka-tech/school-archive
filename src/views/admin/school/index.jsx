@@ -3,6 +3,7 @@ import SwitchField from "components/fields/SwitchField";
 import InputField from "components/fields/TextField";
 import Session from "components/school/session";
 import Switch from "components/switch";
+import { Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { BsStack } from "react-icons/bs";
 import {
@@ -20,6 +21,9 @@ import {
 } from "react-icons/md";
 import { RiAdminFill, RiGovernmentFill } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Modal, Toast } from "flowbite-react";
+
+import DeleteModal from "components/modals/delete modal";
 
 const School = () => {
   const { state } = useLocation();
@@ -33,6 +37,7 @@ const School = () => {
   const [newSession, setNewSession] = useState("");
   const navigate = useNavigate();
   const [seed, setSeed] = useState(1);
+  const [openModal, setOpenModal] = useState(false);
   const reset = () => {
     setSeed(Math.random());
   };
@@ -57,7 +62,8 @@ const School = () => {
         `${BaseUrl}/school/${schoolData._id}`,
         schoolData
       );
-      reset();
+      setSaveDisabled(true);
+      // reset();
     } catch (err) {
     } finally {
     }
@@ -113,12 +119,30 @@ const School = () => {
   }, [schoolData, OGData]);
 
   return (
-    <div className="relative ml-auto mr-auto mt-5 h-fit w-full rounded-xl bg-white px-6 py-4">
+    <div className="min-h-60 relative ml-auto mr-auto mt-5 h-fit w-full rounded-xl bg-white px-6 py-4">
+      {loading && (
+        <div className="flex h-96 items-center justify-center text-center">
+          <Spinner size={"xl"} />
+        </div>
+      )}
       {!loading && schoolData && (
         <>
+          <Modal
+            dismissible
+            size={"lg"}
+            show={openModal}
+            onClose={() => setOpenModal(false)}
+          >
+            <DeleteModal
+              headerText={"Are you sure ?"}
+              bodyText={"The school data can not be recovered if deleted"}
+              close={() => setOpenModal(false)}
+              action={deleteSchool}
+            />
+          </Modal>
           <div className="mb-2 flex items-center">
             <input
-              className=" w-1/2 rounded-xl border-2 border-solid border-white px-4 py-2 text-2xl font-semibold text-navy-900 focus:border-gray-300 focus:outline-none"
+              className=" w-1/2 rounded-xl border-2 border-solid border-gray-100 px-4 py-2 text-2xl font-semibold text-navy-900 focus:border-gray-300 focus:outline-none"
               value={schoolData.name}
               name="name"
               onChange={handleInputChange}
@@ -133,7 +157,9 @@ const School = () => {
             </button>
             <div
               className=" ml-3 flex cursor-pointer items-center rounded-md bg-red-200 px-2 py-2 text-white duration-150 hover:bg-red-500"
-              onClick={deleteSchool}
+              onClick={() => {
+                setOpenModal(true);
+              }}
             >
               <p className="mr-1 font-medium">Delete School</p>
               <MdDelete size={20} />
@@ -147,7 +173,7 @@ const School = () => {
               </div>
               <input
                 value={schoolData.location}
-                className="rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className="rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
               />
             </div>
             <div className="mr-2  w-auto items-center pl-4 text-navy-500">
@@ -158,7 +184,7 @@ const School = () => {
 
               <input
                 value={schoolData.email}
-                className="w-auto rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
                 name="email"
                 onChange={handleInputChange}
               />
@@ -170,7 +196,7 @@ const School = () => {
               </div>
               <input
                 value={schoolData.telephone}
-                className=" w-auto rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className=" w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
                 name="telephone"
                 onChange={handleInputChange}
               />
@@ -182,7 +208,7 @@ const School = () => {
               </div>
               <input
                 value={schoolData.administratorName}
-                className="w-auto rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
                 name="administratorName"
                 onChange={handleInputChange}
               />
@@ -194,7 +220,7 @@ const School = () => {
               </div>
               <input
                 value={schoolData.localGovernmentCouncil}
-                className="w-auto rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
+                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
                 name="localGovernmentCouncil"
                 onChange={handleInputChange}
               />
@@ -206,7 +232,7 @@ const School = () => {
               </div>
               <input
                 value={schoolData.educationLevels}
-                className="w-auto rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
+                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
                 name="educationLevels"
                 onChange={handleInputChange}
               />
@@ -218,7 +244,7 @@ const School = () => {
               </div>
               <input
                 value={schoolData.pta}
-                className="w-auto rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
                 name="pta"
                 onChange={handleInputChange}
               />
@@ -233,7 +259,7 @@ const School = () => {
                 min="1900"
                 max="2099"
                 value={schoolData.foundingYear}
-                className="w-auto rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
+                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
                 name="foundingYear"
                 onChange={handleInputChange}
               />
@@ -252,7 +278,7 @@ const School = () => {
                   )
                     .toISOString()
                     .slice(0, 10)}
-                  className="w-auto rounded-xl border-2 border-solid border-white px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                  className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
                   name="latestDateOfInspection"
                   onChange={(e) => {
                     setSchoolData((prevState) => ({

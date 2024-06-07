@@ -1,6 +1,7 @@
 import axios from "axios";
 import InputField from "components/fields/InputField";
 import Switch from "components/switch";
+import { Spinner } from "flowbite-react";
 import { Formik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,8 +23,8 @@ const AddSchool = () => {
     email: Yup.string().required(),
     foundingYear: Yup.string().required(),
     educationLevels: Yup.string().required(),
-    pta: Yup.string().required(),
-    latestDateOfInspection: Yup.string().required(),
+    pta: Yup.string(),
+    latestDateOfInspection: Yup.string(),
   });
 
   return (
@@ -85,6 +86,7 @@ const AddSchool = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
+                state={errors.name ? "error" : ""}
               />
               <InputField
                 label="Location"
@@ -92,6 +94,7 @@ const AddSchool = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.location}
+                state={errors.location ? "error" : ""}
               />
               <InputField
                 label="Local Government Council"
@@ -99,6 +102,7 @@ const AddSchool = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.localGovernmentCouncil}
+                state={errors.localGovernmentCouncil ? "error" : ""}
               />
               <InputField
                 label="Administrator Name"
@@ -106,6 +110,7 @@ const AddSchool = () => {
                 name="administratorName"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                state={errors.administratorName ? "error" : ""}
               />
               <InputField
                 label="Email address"
@@ -113,6 +118,7 @@ const AddSchool = () => {
                 name="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                state={errors.email ? "error" : ""}
               />
               <InputField
                 label="Telephone no"
@@ -120,6 +126,7 @@ const AddSchool = () => {
                 name="telephone"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                state={errors.telephone ? "error" : ""}
               />
               <InputField
                 label="PTA"
@@ -134,17 +141,19 @@ const AddSchool = () => {
                 name="educationLevels"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                state={errors.educationLevels ? "error" : ""}
               />
               <InputField
                 type={"number"}
                 min="1900"
                 max="2099"
                 label="Founding Year"
-                placeholder="2001"
+                placeholder="1990"
                 value={values.foundingYear}
                 name="foundingYear"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                state={errors.foundingYear ? "error" : ""}
               />
               <InputField
                 type={"date"}
@@ -187,6 +196,13 @@ const AddSchool = () => {
                 onClick={handleSubmit}
               >
                 Add School
+                {loading && (
+                  <Spinner
+                    aria-label="Spinner button example"
+                    size="sm"
+                    className="ml-2"
+                  />
+                )}
               </button>
             </div>
           </>

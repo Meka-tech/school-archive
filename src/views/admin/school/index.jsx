@@ -61,10 +61,7 @@ const School = () => {
   const SaveSchoolChanges = async () => {
     setSaving(true);
     try {
-      const response = await axios.put(
-        `${BaseUrl}/school/${schoolData._id}`,
-        schoolData
-      );
+      await axios.put(`${BaseUrl}/school/${schoolData._id}`, schoolData);
       setSaveDisabled(true);
       toast.success("Changes saved");
       // reset();
@@ -73,6 +70,14 @@ const School = () => {
       setSaving(false);
     }
   };
+
+  //no id
+
+  useEffect(() => {
+    if (!id) {
+      navigate("/admin/home");
+    }
+  }, []);
 
   const deleteSchool = async () => {
     try {

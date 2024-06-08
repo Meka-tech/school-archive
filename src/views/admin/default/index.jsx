@@ -17,6 +17,7 @@ const Dashboard = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searching, setSearching] = useState(false);
   const [searched, setSearched] = useState(false);
+  const [noResults, setNoResults] = useState(false);
   const navigate = useNavigate();
 
   const GetAllSchools = async () => {
@@ -27,6 +28,7 @@ const Dashboard = () => {
       );
       setSearched(false);
       setSearchResults(res.data.results);
+
       setTotalPages(res.data.totalPages);
     } catch (e) {
     } finally {
@@ -39,6 +41,7 @@ const Dashboard = () => {
 
   const SearchSchool = async () => {
     setSearching(true);
+    setNoResults(false);
     try {
       const res = await axios.get(
         `${BaseUrl}/school/search?name=${searchInput}&page=${currentPage}&limit=10`
@@ -47,6 +50,7 @@ const Dashboard = () => {
       setSearchResults(res.data.results);
       setTotalPages(res.data.totalPages);
     } catch (e) {
+      setNoResults(true);
       setSearchResults([]);
       setTotalPages(0);
     } finally {
@@ -98,7 +102,12 @@ const Dashboard = () => {
           </div>
         )}
 
-        {searchResults.length > 0 && !searching && searched ? (
+        {noResults ? (
+          <div className="flex h-full w-full flex-col items-center justify-center">
+            <MdSearchOff size={50} className="mb-2 text-red-500" />
+            <p className="text-3xl font-thin text-red-500">No school found !</p>
+          </div>
+        ) : !searching && searched ? (
           <>
             <div className="flex w-full items-center justify-between">
               <p className="mb-2 ml-2 font-medium text-gray-800">
@@ -154,12 +163,7 @@ const Dashboard = () => {
               onPageChange={setCurrentPage}
             />
           </>
-        ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center">
-            <MdSearchOff size={50} className="mb-2 text-red-500" />
-            <p className="text-3xl font-thin text-red-500">No school found !</p>
-          </div>
-        )}
+        ) : null}
       </div>
       <div className="flex w-full justify-end">
         <button

@@ -1,38 +1,53 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const FinanceDetails = () => {
-  const [details, setDetail] = useState([
+const FinanceDetails = ({ data, update }) => {
+  const DataTemplate = [
     {
       class: "Pre-Nursery school fees per child",
-      first_term: "8,000",
-      second_term: "10,000",
-      third_term: "60,000",
+      first_term: 0,
+      second_term: 0,
+      third_term: 0,
     },
     {
       class: "Nursery school fee per child",
-      first_term: "8,000",
-      second_term: "10,000",
-      third_term: "60,000",
+      first_term: 0,
+      second_term: 0,
+      third_term: 0,
     },
     {
       class: "Primary one (1) to six (6) school fee per child",
-      first_term: "8,000",
-      second_term: "10,000",
-      third_term: "60,000",
+      first_term: 0,
+      second_term: 0,
+      third_term: 0,
     },
     {
       class: "Jss 1 to Jss 3 per student",
-      first_term: "8,000",
-      second_term: "10,000",
-      third_term: "60,000",
+      first_term: 0,
+      second_term: 0,
+      third_term: 0,
     },
     {
       class: "SSS 1 to SSS 3 per student",
-      first_term: "8,000",
-      second_term: "10,000",
-      third_term: "60,000",
+      first_term: 0,
+      second_term: 0,
+      third_term: 0,
     },
-  ]);
+  ];
+  const [details, setDetail] = useState(data.length > 0 ? data : DataTemplate);
+
+  const handleInputChange = (index, e) => {
+    const { name, value } = e.target;
+    const updatedDetails = details.map((item, i) =>
+      i === index ? { ...item, [name]: value } : item
+    );
+
+    setDetail(updatedDetails);
+  };
+
+  useEffect(() => {
+    update(details);
+  }, [details]);
+
   return (
     <div className=" mt-4 mb-4">
       <div className="relative overflow-x-auto">
@@ -61,7 +76,7 @@ const FinanceDetails = () => {
           </thead>
           {details.map((detail, index) => {
             return (
-              <tbody>
+              <tbody key={index}>
                 <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
@@ -75,6 +90,8 @@ const FinanceDetails = () => {
                       value={detail.first_term}
                       placeholder={"nil"}
                       className="border-none focus:outline-none"
+                      name="first_term"
+                      onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
                   <td class="px-6 py-4 text-gray-800">
@@ -83,6 +100,8 @@ const FinanceDetails = () => {
                       value={detail.second_term}
                       className="border-none focus:outline-none"
                       placeholder={"nil"}
+                      name="second_term"
+                      onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
                   <td class="px-6 py-4 text-gray-800">
@@ -91,6 +110,8 @@ const FinanceDetails = () => {
                       value={detail.third_term}
                       className="border-none focus:outline-none"
                       placeholder={"nil"}
+                      name="third_term"
+                      onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
                   <td class="px-6 py-4 text-gray-800">

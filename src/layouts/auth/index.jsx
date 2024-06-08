@@ -3,6 +3,7 @@ import authImg from "assets/img/auth/auth.png";
 import { Link, Routes, Route, Navigate } from "react-router-dom";
 import routes from "routes.js";
 import FixedPlugin from "components/fixedPlugin/FixedPlugin";
+import { Bounce, ToastContainer } from "react-toastify";
 
 export default function Auth() {
   const getRoutes = (routes) => {
@@ -19,6 +20,19 @@ export default function Auth() {
   document.documentElement.dir = "ltr";
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className="relative float-right h-full min-h-screen w-full items-center !bg-white dark:!bg-navy-900">
         <div className="relative flex w-full items-center">
           <Routes>

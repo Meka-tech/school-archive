@@ -59,7 +59,7 @@ const AddSchool = () => {
 
           try {
             const response = await axios.post(`${BaseUrl}/school`, data);
-            console.log(response.data);
+
             const school = response.data.data;
             navigate("/admin/school", { state: { id: school._id } });
           } catch (e) {

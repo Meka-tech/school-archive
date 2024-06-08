@@ -1,3 +1,4 @@
+import { Dropdown } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { MdAdd } from "react-icons/md";
@@ -37,6 +38,36 @@ const StaffList = ({ data, update }) => {
   useEffect(() => {
     update(staffListData);
   }, [staffListData]);
+
+  function countGenderAndReligion(staffArray) {
+    const result = {
+      Male: {
+        Christian: 0,
+        Muslim: 0,
+        Catholic: 0,
+      },
+      Female: {
+        Christian: 0,
+        Muslim: 0,
+        Catholic: 0,
+      },
+    };
+
+    staffArray.forEach((staff) => {
+      const { gender, religious_denomination } = staff;
+      if (
+        (gender === "Male" || gender === "Female") &&
+        (religious_denomination === "Christian" ||
+          religious_denomination === "Muslim" ||
+          religious_denomination === "Catholic")
+      ) {
+        result[gender][religious_denomination]++;
+      }
+    });
+
+    return result;
+  }
+
   return (
     <div className="mb-1">
       <div className="relative overflow-x-auto">
@@ -106,7 +137,7 @@ const StaffList = ({ data, update }) => {
                       <input
                         type="date"
                         value={new Date(
-                          staff.employment_date || "1995-12-17T03:24:00"
+                          staff.employment_date || "1990-12-17T03:24:00"
                         )
                           .toISOString()
                           .slice(0, 10)}
@@ -157,22 +188,105 @@ const StaffList = ({ data, update }) => {
                       />
                     </td>
                     <td class="px-3 py-4 text-gray-800">
-                      <input
-                        value={staff.religious_denomination}
-                        placeholder={"nil"}
-                        onChange={(e) => handleInputChange(index, e)}
-                        className=" w-24 border-none focus:outline-none disabled:bg-white"
-                        name="religious_denomination"
-                      />
+                      <div className="w-20">
+                        <Dropdown
+                          label={
+                            staff.religious_denomination
+                              ? staff.religious_denomination
+                              : "select"
+                          }
+                          dismissOnClick={true}
+                          inline
+                          size="sm"
+                        >
+                          <Dropdown.Item
+                            onClick={() => {
+                              const updatedStaffList = staffListData.map(
+                                (item, i) =>
+                                  i === index
+                                    ? {
+                                        ...item,
+                                        religious_denomination: "Catholic",
+                                      }
+                                    : item
+                              );
+                              setStaffListData(updatedStaffList);
+                            }}
+                          >
+                            Catholic
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={() => {
+                              const updatedStaffList = staffListData.map(
+                                (item, i) =>
+                                  i === index
+                                    ? {
+                                        ...item,
+                                        religious_denomination: "Christian",
+                                      }
+                                    : item
+                              );
+                              setStaffListData(updatedStaffList);
+                            }}
+                          >
+                            Christian
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={() => {
+                              const updatedStaffList = staffListData.map(
+                                (item, i) =>
+                                  i === index
+                                    ? {
+                                        ...item,
+                                        religious_denomination: "Muslim",
+                                      }
+                                    : item
+                              );
+                              setStaffListData(updatedStaffList);
+                            }}
+                          >
+                            Muslim
+                          </Dropdown.Item>
+                        </Dropdown>
+                      </div>
                     </td>
-                    <td class="px-3 py-4 text-gray-800">
-                      <input
-                        value={staff.gender}
-                        placeholder={"female"}
-                        onChange={(e) => handleInputChange(index, e)}
-                        className="w-14 border-none focus:outline-none disabled:bg-white"
-                        name="gender"
-                      />
+                    <td class=" px-3 py-4 text-gray-800">
+                      <div className="w-16 ">
+                        <Dropdown
+                          label={staff.gender ? staff.gender : "Select"}
+                          dismissOnClick={true}
+                          className="bg-white"
+                          inline
+                          size="sm"
+                        >
+                          <Dropdown.Item
+                            onClick={() => {
+                              const updatedStaffList = staffListData.map(
+                                (item, i) =>
+                                  i === index
+                                    ? { ...item, gender: "Male" }
+                                    : item
+                              );
+                              setStaffListData(updatedStaffList);
+                            }}
+                          >
+                            Male
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={() => {
+                              const updatedStaffList = staffListData.map(
+                                (item, i) =>
+                                  i === index
+                                    ? { ...item, gender: "Female" }
+                                    : item
+                              );
+                              setStaffListData(updatedStaffList);
+                            }}
+                          >
+                            Female
+                          </Dropdown.Item>
+                        </Dropdown>
+                      </div>
                     </td>
                     <td class="px-3 py-4 text-gray-800">
                       <input
@@ -235,27 +349,13 @@ const StaffList = ({ data, update }) => {
                 Male
               </th>
               <td class="px-3 py-4 text-gray-800">
-                <input
-                  type="number"
-                  value={""}
-                  placeholder={"nil"}
-                  className="w-28 border-none focus:outline-none"
-                />
+                <p>{countGenderAndReligion(staffListData).Male.Catholic}</p>
               </td>
               <td class="px-3 py-4 text-gray-800">
-                <input
-                  type="number"
-                  value={""}
-                  className="border-none focus:outline-none"
-                  placeholder={"nil"}
-                />
+                <p>{countGenderAndReligion(staffListData).Male.Christian}</p>
               </td>
               <td class="px-3 py-4 text-gray-800">
-                <input
-                  value={""}
-                  className="w-24  border-none focus:outline-none"
-                  placeholder={"nil"}
-                />
+                <p>{countGenderAndReligion(staffListData).Male.Muslim}</p>
               </td>
             </tr>
             <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -266,27 +366,13 @@ const StaffList = ({ data, update }) => {
                 Female
               </th>
               <td class="px-3 py-4 text-gray-800">
-                <input
-                  type="number"
-                  value={""}
-                  placeholder={"nil"}
-                  className="w-28 border-none focus:outline-none"
-                />
+                <p>{countGenderAndReligion(staffListData).Female.Catholic}</p>
               </td>
               <td class="px-3 py-4 text-gray-800">
-                <input
-                  type="number"
-                  value={""}
-                  className="border-none focus:outline-none"
-                  placeholder={"nil"}
-                />
+                <p>{countGenderAndReligion(staffListData).Female.Christian}</p>
               </td>
               <td class="px-3 py-4 text-gray-800">
-                <input
-                  value={""}
-                  className="w-24  border-none focus:outline-none"
-                  placeholder={"nil"}
-                />
+                <p>{countGenderAndReligion(staffListData).Female.Muslim}</p>
               </td>
             </tr>
           </tbody>

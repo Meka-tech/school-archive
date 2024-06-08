@@ -24,6 +24,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Modal, Toast } from "flowbite-react";
 
 import DeleteModal from "components/modals/delete modal";
+import { toast } from "react-toastify";
 
 const School = () => {
   const { state } = useLocation();
@@ -38,6 +39,7 @@ const School = () => {
   const navigate = useNavigate();
   const [seed, setSeed] = useState(1);
   const [openModal, setOpenModal] = useState(false);
+  const [saving, setSaving] = useState(false);
   const reset = () => {
     setSeed(Math.random());
   };
@@ -57,15 +59,18 @@ const School = () => {
   };
 
   const SaveSchoolChanges = async () => {
+    setSaving(true);
     try {
       const response = await axios.put(
         `${BaseUrl}/school/${schoolData._id}`,
         schoolData
       );
       setSaveDisabled(true);
+      toast.success("Changes saved");
       // reset();
     } catch (err) {
     } finally {
+      setSaving(false);
     }
   };
 
@@ -153,7 +158,15 @@ const School = () => {
               disabled={saveDisabled}
             >
               Save
-              <MdSave className="ml-1" size={20} />
+              {saving ? (
+                <Spinner
+                  aria-label="Spinner button example"
+                  size="sm"
+                  className="ml-2"
+                />
+              ) : (
+                <MdSave className="ml-1" size={20} />
+              )}
             </button>
             <div
               className=" ml-3 flex cursor-pointer items-center rounded-md bg-red-200 px-2 py-2 text-white duration-150 hover:bg-red-500"

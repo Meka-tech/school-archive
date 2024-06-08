@@ -4,6 +4,8 @@ import Navbar from "components/navbar";
 import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes.js";
+import "react-toastify/dist/ReactToastify.css";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 
 export default function Admin(props) {
   const { ...rest } = props;
@@ -59,12 +61,25 @@ export default function Admin(props) {
   document.documentElement.dir = "ltr";
   return (
     <div className="flex h-full w-full">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <Sidebar open={open} onClose={() => setOpen(false)} />
       {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
         {/* Main Content */}
         <main
-          className={`mx-[12px] xl:ml-[313px] h-full flex-none transition-all md:pr-2`}
+          className={`mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]`}
         >
           {/* Routes */}
           <div className="h-full">
@@ -75,7 +90,7 @@ export default function Admin(props) {
               secondary={getActiveNavbar(routes)}
               {...rest}
             />
-            <div className="pt-5s min-h-[84vh] mx-auto mb-auto h-full p-2 md:pr-2">
+            <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
               <Routes>
                 {getRoutes(routes)}
 

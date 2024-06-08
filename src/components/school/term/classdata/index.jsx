@@ -244,9 +244,9 @@ const ClassData = ({ data, update }) => {
               <th scope="col" class="px-6 py-3">
                 Class
               </th>
-              <th scope="col" class="px-6 py-3">
+              {/* <th scope="col" class="px-6 py-3">
                 No of Student
-              </th>
+              </th> */}
               <th scope="col" class="px-6 py-3">
                 Males
               </th>
@@ -268,14 +268,14 @@ const ClassData = ({ data, update }) => {
                   >
                     {classDatum.class}
                   </th>
-                  <td class="px-6 py-4 text-gray-800">
+                  {/* <td class="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={""}
                       placeholder={"nil"}
                       className="border-none focus:border-white focus:outline-none"
                     />
-                  </td>
+                  </td> */}
                   <td class="px-6 py-4 text-gray-800">
                     <input
                       type="number"
@@ -410,7 +410,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.christian_girls}
-                      className="border-none focus:outline-none"
+                      className="w-20 border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(
@@ -435,7 +435,6 @@ const ClassData = ({ data, update }) => {
               <th scope="col" class="px-6 py-3">
                 Class
               </th>
-
               <th scope="col" class="px-6 py-3">
                 Males
               </th>
@@ -462,7 +461,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.males_on_scholarship}
-                      className="border-none focus:outline-none"
+                      className="w-20 border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(
@@ -477,7 +476,7 @@ const ClassData = ({ data, update }) => {
                     <input
                       type="number"
                       value={classDatum.females_on_scholarship}
-                      className="border-none focus:outline-none"
+                      className="w-20 border-none focus:outline-none"
                       placeholder={"nil"}
                       onChange={(e) =>
                         handleInputChange(
@@ -491,13 +490,14 @@ const ClassData = ({ data, update }) => {
                   <td class="px-6 py-4 text-gray-800">
                     <input
                       type="number"
+                      readOnly
                       value={`${
                         Number(classDatum.males_on_scholarship) +
                         Number(classDatum.females_on_scholarship)
                       }`}
                       placeholder={"nil"}
                       disabled={true}
-                      className="border-none focus:outline-none disabled:bg-white"
+                      className="w-20 border-none bg-red-500 focus:outline-none disabled:bg-white"
                     />
                   </td>
                 </tr>

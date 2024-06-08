@@ -1,5 +1,6 @@
 // Custom components
 import React from "react";
+import { IoMdEye } from "react-icons/io";
 
 function InputField(props) {
   const {
@@ -11,6 +12,7 @@ function InputField(props) {
     variant,
     state,
     disabled,
+    eye,
     ...rest
   } = props;
 

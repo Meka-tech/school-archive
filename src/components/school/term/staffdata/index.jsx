@@ -21,8 +21,6 @@ const StaffData = ({ data, update }) => {
     update(staffdata);
   }, [staffdata]);
 
-  console.log(staffdata);
-
   return (
     <div className="mb-10">
       <div className="relative overflow-x-auto">

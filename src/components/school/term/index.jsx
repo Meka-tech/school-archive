@@ -1,13 +1,14 @@
 import Dropdown from "components/dropdown";
 import { useEffect, useState } from "react";
 import { FaPen, FaSave } from "react-icons/fa";
-import { MdArrowDropDown, MdDelete } from "react-icons/md";
+import { MdArrowDropDown, MdDelete, MdSave } from "react-icons/md";
 import ClassData from "./classdata";
 import StaffData from "./staffdata";
 import StaffList from "./stafflist";
 import axios from "axios";
 import DeleteModal from "components/modals/delete modal";
-import { Modal } from "flowbite-react";
+import { Modal, Spinner } from "flowbite-react";
+import { toast } from "react-toastify";
 
 const Term = ({ data, reset }) => {
   const [open, setOpen] = useState(false);
@@ -17,6 +18,7 @@ const Term = ({ data, reset }) => {
   const [staffData, setStaffData] = useState(data.staffData);
   const [staffList, setStaffList] = useState(data.staffList);
   const [openModal, setOpenModal] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   const handleUpdateClass = (data) => {
     setClassData(data);
@@ -33,17 +35,20 @@ const Term = ({ data, reset }) => {
   const DeleteTerm = async () => {
     try {
       await axios.delete(`${BaseUrl}/term/${data._id}`);
+      toast.success("Successfully deleted");
       reset();
     } catch (e) {
+      toast.error("something went wrong");
     } finally {
     }
   };
 
   const UpdateTerm = async () => {
+    setSaving(true);
     try {
       if (classData !== data.classes) {
         await axios.put(`${BaseUrl}/term/class/${data._id}`, {
-          classData: classData,
+          classes: classData,
         });
       }
       if (staffData !== data.staffData) {
@@ -56,9 +61,13 @@ const Term = ({ data, reset }) => {
           staffList: staffList,
         });
       }
-      reset();
+      toast.success("Successfully updated");
+      setSaveDisabled(true);
+      // reset();
     } catch (err) {
+      toast.error("something went wrong");
     } finally {
+      setSaving(false);
     }
   };
 
@@ -73,6 +82,7 @@ const Term = ({ data, reset }) => {
       setSaveDisabled(true);
     }
   }, [classData, staffData, staffList]);
+
   return (
     <div className="ml-10 mt-4 w-11/12">
       <Modal
@@ -104,7 +114,11 @@ const Term = ({ data, reset }) => {
           disabled={saveDisabled}
           onClick={UpdateTerm}
         >
-          <FaSave />
+          {saving ? (
+            <Spinner aria-label="Spinner button example" size="sm" />
+          ) : (
+            <FaSave />
+          )}
         </button>
         <button
           className=" ml-2 flex h-fit w-fit cursor-pointer items-center rounded-lg bg-red-300 p-3 text-lg font-medium text-white duration-150 hover:bg-red-500"

@@ -28,8 +28,8 @@ const AddSchool = () => {
   });
 
   return (
-    <div className="ml-auto mr-auto mt-5 w-7/12 rounded-xl bg-white px-6 py-4">
-      <p className="mb-4  text-2xl font-semibold text-navy-800 ">
+    <div className="ml-auto mr-auto mt-5 w-full  rounded-xl bg-white px-3 py-4 xl:w-7/12 xl:px-6">
+      <p className="mb-4  text-xl font-semibold text-navy-800 xl:text-2xl ">
         Add School to archives
       </p>
       <Formik
@@ -79,7 +79,7 @@ const AddSchool = () => {
           isSubmitting,
         }) => (
           <>
-            <div className="grid grid-cols-2 items-center justify-center gap-4">
+            <div className="grid grid-cols-2 items-center justify-center gap-2 xl:gap-4">
               <InputField
                 label="Name"
                 name="name"
@@ -165,7 +165,7 @@ const AddSchool = () => {
               />
               <div className="flex">
                 <p
-                  className={`mb-3 ml-3 text-sm font-bold text-navy-700 dark:text-white`}
+                  className={`mb-3 ml-3 text-xs font-bold text-navy-700 dark:text-white xl:text-sm`}
                 >
                   Student Boarding
                 </p>
@@ -178,7 +178,7 @@ const AddSchool = () => {
               </div>
               <div className="flex">
                 <p
-                  className={`mb-3 ml-3 text-sm font-bold text-navy-700 dark:text-white`}
+                  className={`mb-3 ml-3 text-xs font-bold text-navy-700 dark:text-white xl:text-sm`}
                 >
                   Security Guard
                 </p>

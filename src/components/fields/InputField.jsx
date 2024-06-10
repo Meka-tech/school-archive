@@ -20,7 +20,7 @@ function InputField(props) {
     <div className={`${extra}`}>
       <label
         htmlFor={id}
-        className={`text-sm text-navy-700 dark:text-white ${
+        className={` text-xs text-navy-700 dark:text-white xl:text-sm ${
           variant === "auth" ? "ml-1.5 font-medium" : "ml-3 font-bold"
         }`}
       >

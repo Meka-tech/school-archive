@@ -27,8 +27,9 @@ import DeleteModal from "components/modals/delete modal";
 import { toast } from "react-toastify";
 
 const School = () => {
-  const { state } = useLocation();
-  const { id } = state;
+  const state = useLocation().state;
+
+  const id = state?.id;
   const BaseUrl = process.env.REACT_APP_BASE_URL;
   const [OGData, setOGData] = useState({});
   const [schoolData, setSchoolData] = useState({});
@@ -74,7 +75,7 @@ const School = () => {
   //no id
 
   useEffect(() => {
-    if (!id) {
+    if (!id || !state) {
       navigate("/admin/home");
     }
   }, []);
@@ -129,9 +130,9 @@ const School = () => {
   }, [schoolData, OGData]);
 
   return (
-    <div className="min-h-60 relative ml-auto mr-auto mt-5 h-fit w-full rounded-xl bg-white px-6 py-4">
+    <div className="min-h-60 relative ml-auto mr-auto mt-5 h-fit w-full rounded-xl bg-white px-3 py-2 xl:px-6 xl:py-4">
       {loading && (
-        <div className="flex h-96 items-center justify-center text-center">
+        <div className="flex h-screen items-center justify-center text-center xl:h-96">
           <Spinner size={"xl"} />
         </div>
       )}
@@ -183,7 +184,7 @@ const School = () => {
               <MdDelete size={20} />
             </div>
           </div>
-          <div className="grid grid-cols-4 items-center gap-y-4">
+          <div className="grid grid-cols-2 items-center gap-x-2 xl:grid-cols-4 xl:gap-y-4">
             <div className="mr-2  w-auto items-center pl-4 text-navy-500">
               <div className="flex items-center">
                 <MdLocationPin size={15} className="mr-1" />

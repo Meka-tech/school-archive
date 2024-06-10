@@ -238,22 +238,22 @@ const ClassData = ({ data, update }) => {
     <div className="mb-1">
       <div className="relative overflow-x-auto">
         <p className="mb-4 text-2xl font-medium text-navy-800">Student Data</p>
-        <table class=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-          <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table className=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Class
               </th>
-              {/* <th scope="col" class="px-6 py-3">
+              {/* <th scope="col" className="px-6 py-3">
                 No of Student
               </th> */}
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Males
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Females
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Total
               </th>
             </tr>
@@ -261,14 +261,14 @@ const ClassData = ({ data, update }) => {
           {classData.map((classDatum, index) => {
             return (
               <tbody>
-                <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
+                <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
-                    class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
                     {classDatum.class}
                   </th>
-                  {/* <td class="px-6 py-4 text-gray-800">
+                  {/* <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={""}
@@ -276,7 +276,7 @@ const ClassData = ({ data, update }) => {
                       className="border-none focus:border-white focus:outline-none"
                     />
                   </td> */}
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.males}
@@ -287,7 +287,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.females}
@@ -298,7 +298,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={`${
@@ -314,28 +314,28 @@ const ClassData = ({ data, update }) => {
             );
           })}
         </table>
-        <table class="  mb-20  w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-          <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table className="  mb-20  w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-2 py-3">
+              <th scope="col" className="px-2 py-3">
                 Class
               </th>
-              <th scope="col" class="px-2 py-3">
+              <th scope="col" className="px-2 py-3">
                 No of Catholic boys
               </th>
-              <th scope="col" class="px-2 py-3">
+              <th scope="col" className="px-2 py-3">
                 No of Muslim boys
               </th>
-              <th scope="col" class="px-2 py-3">
+              <th scope="col" className="px-2 py-3">
                 No of Catholic girls
               </th>
-              <th scope="col" class="px-2 py-3">
+              <th scope="col" className="px-2 py-3">
                 No of Muslim girls
               </th>
-              <th scope="col" class="px-2 py-3">
+              <th scope="col" className="px-2 py-3">
                 No of Christian boys
               </th>
-              <th scope="col" class="px-2 py-3">
+              <th scope="col" className="px-2 py-3">
                 No of Christian girls
               </th>
             </tr>
@@ -343,14 +343,14 @@ const ClassData = ({ data, update }) => {
           {classData.map((classDatum, index) => {
             return (
               <tbody>
-                <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
+                <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
-                    class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
                     {classDatum.class}
                   </th>
-                  <td class="px-2 py-4 text-gray-800">
+                  <td className="px-2 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.catholic_boys}
@@ -361,7 +361,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-2 py-4 text-gray-800">
+                  <td className="px-2 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.muslim_boys}
@@ -372,7 +372,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-2 py-4 text-gray-800">
+                  <td className="px-2 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.catholic_girls}
@@ -383,7 +383,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-2 py-4 text-gray-800">
+                  <td className="px-2 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.muslim_girls}
@@ -395,7 +395,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-2 py-4 text-gray-800">
+                  <td className="px-2 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.christian_boys}
@@ -406,7 +406,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-2 py-4 text-gray-800">
+                  <td className="px-2 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.christian_girls}
@@ -429,19 +429,19 @@ const ClassData = ({ data, update }) => {
         <p className="mb-4 text-2xl font-medium text-navy-800">
           Students on Scholarship
         </p>
-        <table class=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-          <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table className=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Class
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Males
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Females
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Total
               </th>
             </tr>
@@ -449,15 +449,15 @@ const ClassData = ({ data, update }) => {
           {classData.map((classDatum, index) => {
             return (
               <tbody>
-                <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
+                <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
-                    class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
                     {classDatum.class}
                   </th>
 
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.males_on_scholarship}
@@ -472,7 +472,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={classDatum.females_on_scholarship}
@@ -487,7 +487,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       readOnly

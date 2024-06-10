@@ -5,19 +5,14 @@ import Links from "./components/Links";
 
 import SidebarCard from "components/sidebar/componentsrtl/SidebarCard";
 import routes from "routes.js";
-import {
-  MdHome,
-  MdOutlineShoppingCart,
-  MdBarChart,
-  MdPerson,
-  MdLock,
-  MdAdd,
-} from "react-icons/md";
+import { MdHome, MdPerson, MdAdd } from "react-icons/md";
 import MainDashboard from "../../views/admin/default";
 import Profile from "../../views/admin/profile";
 import AddSchool from "../../views/admin/school/add";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ open, onClose }) => {
+  const navigate = useNavigate();
   const routes = [
     {
       name: "Home",
@@ -54,8 +49,11 @@ const Sidebar = ({ open, onClose }) => {
         <HiX />
       </span>
 
-      <div className={`mx-[56px] mt-[50px] flex items-center`}>
-        <div className="text-[22px] ml-1 mt-1 h-2.5 font-poppins font-bold uppercase text-navy-700 dark:text-white">
+      <div
+        className={`mx-[56px] mt-[50px] flex cursor-pointer items-center`}
+        onClick={() => navigate("/")}
+      >
+        <div className="ml-1 mt-1 h-2.5 font-poppins text-[22px] font-bold uppercase text-navy-700 dark:text-white">
           School <span class="font-medium">ARCHIVE</span>
         </div>
       </div>

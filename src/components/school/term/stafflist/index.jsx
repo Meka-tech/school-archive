@@ -73,34 +73,34 @@ const StaffList = ({ data, update }) => {
       <div className="relative overflow-x-auto">
         <p className="mb-4 text-2xl font-medium text-navy-800">Staff List</p>
         <div className="mb-20">
-          <table class=" w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-            <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+          <table className=" w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+            <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   S/N
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   Name of staff
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   Date of employment
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   ACADEMIC QUALIFICATION
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   AREA OF EMPLOYMENT
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   Salary
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   Religious Demnomination
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   Gender
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   Phone no
                 </th>
               </tr>
@@ -109,7 +109,7 @@ const StaffList = ({ data, update }) => {
               return (
                 <tbody>
                   <tr
-                    class=" relative border-b bg-white dark:border-gray-700 dark:bg-gray-800"
+                    className=" relative border-b bg-white dark:border-gray-700 dark:bg-gray-800"
                     onMouseOver={() => {
                       setActiveHover(index);
                     }}
@@ -119,11 +119,11 @@ const StaffList = ({ data, update }) => {
                   >
                     <th
                       scope="row"
-                      class="whitespace-nowrap px-3 py-4 font-medium text-gray-900 dark:text-white"
+                      className="whitespace-nowrap px-3 py-4 font-medium text-gray-900 dark:text-white"
                     >
                       {index + 1}
                     </th>
-                    <td class="px-3 py-4 text-gray-800">
+                    <td className="px-3 py-4 text-gray-800">
                       <input
                         type="text"
                         value={staff.name}
@@ -133,7 +133,7 @@ const StaffList = ({ data, update }) => {
                         name="name"
                       />
                     </td>
-                    <td class="px-3 py-4 text-gray-800">
+                    <td className="px-3 py-4 text-gray-800">
                       <input
                         type="date"
                         value={new Date(
@@ -159,7 +159,7 @@ const StaffList = ({ data, update }) => {
                         name="employment_date"
                       />
                     </td>
-                    <td class="px-3 py-4 text-gray-800">
+                    <td className="px-3 py-4 text-gray-800">
                       <input
                         value={staff.academic_qualification}
                         className="w-24  border-none focus:outline-none"
@@ -168,7 +168,7 @@ const StaffList = ({ data, update }) => {
                         name="academic_qualification"
                       />
                     </td>
-                    <td class="px-3 py-4 text-gray-800">
+                    <td className="px-3 py-4 text-gray-800">
                       <input
                         value={staff.area_of_employment}
                         placeholder={"nil"}
@@ -177,7 +177,7 @@ const StaffList = ({ data, update }) => {
                         name="area_of_employment"
                       />
                     </td>
-                    <td class="px-3 py-4 text-gray-800">
+                    <td className="px-3 py-4 text-gray-800">
                       <input
                         type="number"
                         value={staff.salary}
@@ -187,7 +187,7 @@ const StaffList = ({ data, update }) => {
                         name="salary"
                       />
                     </td>
-                    <td class="px-3 py-4 text-gray-800">
+                    <td className="px-3 py-4 text-gray-800">
                       <div className="w-20">
                         <Dropdown
                           label={
@@ -250,7 +250,7 @@ const StaffList = ({ data, update }) => {
                         </Dropdown>
                       </div>
                     </td>
-                    <td class=" px-3 py-4 text-gray-800">
+                    <td className=" px-3 py-4 text-gray-800">
                       <div className="w-16 ">
                         <Dropdown
                           label={staff.gender ? staff.gender : "Select"}
@@ -288,7 +288,7 @@ const StaffList = ({ data, update }) => {
                         </Dropdown>
                       </div>
                     </td>
-                    <td class="px-3 py-4 text-gray-800">
+                    <td className="px-3 py-4 text-gray-800">
                       <input
                         type="number"
                         value={staff.phone}
@@ -323,55 +323,55 @@ const StaffList = ({ data, update }) => {
             </button>
           </div>
         </div>
-        <table class=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-          <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table className=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Details
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Total number of catholic staff
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Total number of other Denomination staff
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Total number of Muslims staff
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
+            <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
               <th
                 scope="row"
-                class="whitespace-nowrap px-3 py-4 font-medium text-gray-900 dark:text-white"
+                className="whitespace-nowrap px-3 py-4 font-medium text-gray-900 dark:text-white"
               >
                 Male
               </th>
-              <td class="px-3 py-4 text-gray-800">
+              <td className="px-3 py-4 text-gray-800">
                 <p>{countGenderAndReligion(staffListData).Male.Catholic}</p>
               </td>
-              <td class="px-3 py-4 text-gray-800">
+              <td className="px-3 py-4 text-gray-800">
                 <p>{countGenderAndReligion(staffListData).Male.Christian}</p>
               </td>
-              <td class="px-3 py-4 text-gray-800">
+              <td className="px-3 py-4 text-gray-800">
                 <p>{countGenderAndReligion(staffListData).Male.Muslim}</p>
               </td>
             </tr>
-            <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
+            <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
               <th
                 scope="row"
-                class="whitespace-nowrap px-3 py-4 font-medium text-gray-900 dark:text-white"
+                className="whitespace-nowrap px-3 py-4 font-medium text-gray-900 dark:text-white"
               >
                 Female
               </th>
-              <td class="px-3 py-4 text-gray-800">
+              <td className="px-3 py-4 text-gray-800">
                 <p>{countGenderAndReligion(staffListData).Female.Catholic}</p>
               </td>
-              <td class="px-3 py-4 text-gray-800">
+              <td className="px-3 py-4 text-gray-800">
                 <p>{countGenderAndReligion(staffListData).Female.Christian}</p>
               </td>
-              <td class="px-3 py-4 text-gray-800">
+              <td className="px-3 py-4 text-gray-800">
                 <p>{countGenderAndReligion(staffListData).Female.Muslim}</p>
               </td>
             </tr>

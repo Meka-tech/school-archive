@@ -34,7 +34,7 @@ export default function Auth() {
         transition={Bounce}
       />
       <div className="relative float-right h-full min-h-screen w-full items-center !bg-white dark:!bg-navy-900">
-        <div className="relative flex w-full items-center">
+        <div className="relative ml-auto mr-auto flex w-4/5 items-center md:w-full">
           <Routes>
             {getRoutes(routes)}
             <Route path="/" element={<Navigate to="/auth/sign-in" replace />} />

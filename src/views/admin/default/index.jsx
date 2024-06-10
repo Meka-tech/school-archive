@@ -24,7 +24,7 @@ const Dashboard = () => {
     setSearching(true);
     try {
       const res = await axios.get(
-        `${BaseUrl}/school?page=${currentPage}&limit=10`
+        `${BaseUrl}/school?page=${currentPage}&limit=12`
       );
       setSearched(false);
       setSearchResults(res.data.results);
@@ -44,7 +44,7 @@ const Dashboard = () => {
     setNoResults(false);
     try {
       const res = await axios.get(
-        `${BaseUrl}/school/search?name=${searchInput}&page=${currentPage}&limit=10`
+        `${BaseUrl}/school/search?name=${searchInput}&page=${currentPage}&limit=12`
       );
       setSearched(true);
       setSearchResults(res.data.results);
@@ -71,10 +71,16 @@ const Dashboard = () => {
     }
   }, [currentPage, BaseUrl]);
 
+  useEffect(() => {
+    if (searchInput.length === 0 && !searched) {
+      GetAllSchools();
+    }
+  }, [currentPage]);
+
   return (
     <div>
       <div className="mb-6 mt-5 flex items-center  justify-center ">
-        <div className="flex h-fit w-1/2 items-center rounded-lg bg-white px-3 py-2">
+        <div className="flex h-fit w-4/5 items-center rounded-lg bg-white px-3 py-2 xl:w-1/2">
           <div className="mr-2 text-gray-500">
             <MdSearch size={20} />
           </div>
@@ -94,7 +100,7 @@ const Dashboard = () => {
         </button>
       </div>
 
-      <div className="h-[550px] w-full">
+      <div className="h-[600px] w-full xl:h-[550px]">
         {/* loading */}
         {searching && (
           <div className="flex h-full items-center justify-center text-center">
@@ -143,7 +149,7 @@ const Dashboard = () => {
           </>
         ) : searchResults?.length > 0 && !searching && !searched ? (
           <>
-            <div className="mb-2 grid h-5/6 w-full grid-cols-4 flex-wrap justify-between gap-x-4 overflow-auto">
+            <div className=" mb-4 flex  h-5/6 w-full grid-cols-4 grid-rows-3 flex-col gap-4 overflow-auto xl:mb-2 xl:grid">
               {searchResults.map((school, i) => {
                 return (
                   <SchoolCard

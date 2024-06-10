@@ -54,22 +54,22 @@ const FinanceDetails = ({ data, update }) => {
         <p className="mb-4 text-xl font-medium text-navy-800">
           Details of Finance
         </p>
-        <table class=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
-          <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <table className=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Details
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 First term Amount
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Second term Amount
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Third term Amount
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Total
               </th>
             </tr>
@@ -77,14 +77,14 @@ const FinanceDetails = ({ data, update }) => {
           {details.map((detail, index) => {
             return (
               <tbody key={index}>
-                <tr class="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
+                <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
-                    class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
                     {detail.class}
                   </th>
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={detail.first_term}
@@ -94,7 +94,7 @@ const FinanceDetails = ({ data, update }) => {
                       onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={detail.second_term}
@@ -104,7 +104,7 @@ const FinanceDetails = ({ data, update }) => {
                       onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={detail.third_term}
@@ -114,7 +114,7 @@ const FinanceDetails = ({ data, update }) => {
                       onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
-                  <td class="px-6 py-4 text-gray-800">
+                  <td className="px-6 py-4 text-gray-800">
                     <input
                       type="number"
                       value={`${

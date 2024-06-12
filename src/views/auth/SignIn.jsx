@@ -30,7 +30,8 @@ export default function SignIn() {
           try {
             const response = await axios.post(`${BaseUrl}/auth/login`, values);
             localStorage.setItem("token", response.data.token);
-            localStorage.setItem("user", response.data.user);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+
             navigate("/admin/home");
           } catch (e) {
             toast.error(e.response.data.message);

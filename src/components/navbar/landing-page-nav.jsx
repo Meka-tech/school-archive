@@ -16,10 +16,10 @@ const LandingPageNav = () => {
     );
   };
   return (
-    <nav className="sticky top-0 z-50 flex w-full items-center justify-center bg-white px-2 py-3 shadow-md lg:px-10 lg:py-5">
-      <div className="flex w-full items-center lg:w-3/4">
+    <nav className="sticky top-0 z-50 flex w-full items-center justify-center bg-white px-2 py-3 shadow-md lg:px-4 lg:py-5">
+      <div className="flex w-full items-center lg:w-11/12">
         <div
-          className=" cursor-pointer font-poppins text-[12px] font-bold uppercase text-[#064e3b] dark:text-white lg:text-[22px]"
+          className=" cursor-pointer font-poppins text-[16px] font-bold uppercase text-[#064e3b] dark:text-white lg:text-[22px]"
           onClick={() => navigate("/")}
         >
           School <span className="font-medium">ARCHIVE</span>

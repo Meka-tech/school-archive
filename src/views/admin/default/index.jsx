@@ -111,7 +111,9 @@ const Dashboard = () => {
         {noResults ? (
           <div className="flex h-full w-full flex-col items-center justify-center">
             <MdSearchOff size={50} className="mb-2 text-red-500" />
-            <p className="text-3xl font-thin text-red-500">No school found !</p>
+            <p className=" text-2xl font-thin text-red-500 xl:text-3xl">
+              No school found !
+            </p>
           </div>
         ) : !searching && searched ? (
           <>
@@ -149,7 +151,7 @@ const Dashboard = () => {
           </>
         ) : searchResults?.length > 0 && !searching && !searched ? (
           <>
-            <div className=" mb-4 flex  h-5/6 w-full grid-cols-4 grid-rows-3 flex-col gap-4 overflow-auto xl:mb-2 xl:grid">
+            <div className=" mb-4 flex  h-5/6 w-full grid-cols-4 grid-rows-3 flex-col gap-4 overflow-auto xl:mb-2 xl:grid xl:gap-y-10">
               {searchResults.map((school, i) => {
                 return (
                   <SchoolCard

@@ -1,7 +1,7 @@
 import React from "react";
 import Dropdown from "components/dropdown";
 import { FiAlignJustify } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import navbarimage from "assets/img/layout/Navbar.png";
 import { BsArrowBarUp } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
@@ -10,12 +10,20 @@ import {
   IoMdNotificationsOutline,
   IoMdInformationCircleOutline,
 } from "react-icons/io";
-import avatar from "assets/img/avatars/avatar4.png";
+import avatar from "assets/img/avatars/default-image.jpg";
 
 const Navbar = (props) => {
   const { onOpenSidenav, brandText } = props;
+  const navigate = useNavigate();
   const [darkmode, setDarkmode] = React.useState(false);
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const Logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/auth/sign-in");
+  };
   return (
     <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
       <div className="ml-[6px]">
@@ -188,8 +196,8 @@ const Navbar = (props) => {
             <div className="flex w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
               <div className="p-4">
                 <div className="flex items-center gap-2">
-                  <p className="text-sm font-bold text-navy-700 dark:text-white">
-                    👋 Hey, Adela
+                  <p className="text-sm font-bold capitalize text-navy-700 dark:text-white">
+                    👋 Hey, {user?.username}
                   </p>{" "}
                 </div>
               </div>
@@ -211,6 +219,7 @@ const Navbar = (props) => {
                 <a
                   href=" "
                   className="text-sm font-medium text-red-500 transition duration-150 ease-out hover:text-red-500 hover:ease-in"
+                  onClick={Logout}
                 >
                   Log Out
                 </a>

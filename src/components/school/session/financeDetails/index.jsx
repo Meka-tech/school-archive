@@ -49,27 +49,27 @@ const FinanceDetails = ({ data, update }) => {
   }, [details]);
 
   return (
-    <div className=" mt-4 mb-4">
+    <div className="mt-4 mb-4">
       <div className="relative overflow-x-auto">
-        <p className="mb-4 text-xl font-medium text-navy-800">
+        <p className="mb-2 text-lg font-medium text-navy-800 xl:mb-4 xl:text-xl">
           Details of Finance
         </p>
-        <table className=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        <table className=" mb-20 w-full text-left text-xs text-gray-500 rtl:text-right dark:text-gray-400 xl:text-sm">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Details
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 First term Amount
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Second term Amount
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Third term Amount
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Total
               </th>
             </tr>
@@ -80,11 +80,11 @@ const FinanceDetails = ({ data, update }) => {
                 <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
-                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-3 py-2 font-medium text-gray-900 dark:text-white xl:px-6 xl:py-4"
                   >
                     {detail.class}
                   </th>
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={detail.first_term}
@@ -94,7 +94,7 @@ const FinanceDetails = ({ data, update }) => {
                       onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={detail.second_term}
@@ -104,7 +104,7 @@ const FinanceDetails = ({ data, update }) => {
                       onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={detail.third_term}
@@ -114,7 +114,7 @@ const FinanceDetails = ({ data, update }) => {
                       onChange={(e) => handleInputChange(index, e)}
                     />
                   </td>
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={`${

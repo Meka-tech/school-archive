@@ -84,7 +84,7 @@ const Term = ({ data, reset }) => {
   }, [classData, staffData, staffList]);
 
   return (
-    <div className="ml-10 mt-4 w-11/12">
+    <div className="mt-4 w-full xl:ml-10 xl:w-11/12">
       <Modal
         dismissible
         size={"lg"}
@@ -98,9 +98,9 @@ const Term = ({ data, reset }) => {
           action={DeleteTerm}
         />
       </Modal>
-      <div className="mb-8 flex">
+      <div className="mb-4 flex xl:mb-8">
         <button
-          className="flex w-fit items-center rounded-lg bg-navy-900 px-3 py-1 text-lg font-medium text-white"
+          className="flex w-fit items-center rounded-lg bg-navy-900 px-1.5 font-medium text-white xl:py-1 xl:px-3 xl:text-lg"
           onClick={() => setOpen(!open)}
         >
           Term : {data.term_no}

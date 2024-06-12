@@ -37,6 +37,7 @@ const School = () => {
   const [loading, setLoading] = useState(false);
   const [saveDisabled, setSaveDisabled] = useState(true);
   const [newSession, setNewSession] = useState("");
+  const [creatingNewSession, setCreatingNewSession] = useState(false);
   const navigate = useNavigate();
   const [seed, setSeed] = useState(1);
   const [openModal, setOpenModal] = useState(false);
@@ -93,6 +94,7 @@ const School = () => {
   };
 
   const CreateSession = async () => {
+    setCreatingNewSession(true);
     try {
       const response = await axios.post(`${BaseUrl}/session/`, {
         session: newSession,
@@ -102,6 +104,7 @@ const School = () => {
       setNewSession("");
     } catch (err) {
     } finally {
+      setCreatingNewSession(false);
     }
   };
 
@@ -151,125 +154,127 @@ const School = () => {
               action={deleteSchool}
             />
           </Modal>
-          <div className="mb-2 flex items-center">
+          <div className="mb-2 flex flex-col-reverse items-center justify-between xl:flex-row">
             <input
-              className=" w-1/2 rounded-xl border-2 border-solid border-gray-100 px-4 py-2 text-2xl font-semibold text-navy-900 focus:border-gray-300 focus:outline-none"
+              className=" w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-xl font-semibold text-navy-900 focus:border-gray-300 focus:outline-none xl:w-1/2 xl:px-4 xl:py-2 xl:text-2xl "
               value={schoolData.name}
               name="name"
               onChange={handleInputChange}
             />
-            <button
-              className="ml-auto flex cursor-pointer items-center rounded-xl bg-navy-700 px-3 py-2 text-base font-medium text-white transition duration-200 hover:bg-navy-800 active:bg-navy-900 disabled:bg-gray-400 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
-              onClick={SaveSchoolChanges}
-              disabled={saveDisabled}
-            >
-              Save
-              {saving ? (
-                <Spinner
-                  aria-label="Spinner button example"
-                  size="sm"
-                  className="ml-2"
-                />
-              ) : (
-                <MdSave className="ml-1" size={20} />
-              )}
-            </button>
-            <div
-              className=" ml-3 flex cursor-pointer items-center rounded-md bg-red-200 px-2 py-2 text-white duration-150 hover:bg-red-500"
-              onClick={() => {
-                setOpenModal(true);
-              }}
-            >
-              <p className="mr-1 font-medium">Delete School</p>
-              <MdDelete size={20} />
+            <div className="mb-3 flex w-full items-center justify-between xl:mb-0 xl:w-fit xl:justify-start">
+              <button
+                className="flex cursor-pointer items-center rounded-xl bg-navy-700 px-3 py-2 text-base font-medium text-white transition duration-200 hover:bg-navy-800 active:bg-navy-900 disabled:bg-gray-400 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
+                onClick={SaveSchoolChanges}
+                disabled={saveDisabled}
+              >
+                Save
+                {saving ? (
+                  <Spinner
+                    aria-label="Spinner button example"
+                    size="sm"
+                    className="ml-2"
+                  />
+                ) : (
+                  <MdSave className="ml-1" size={20} />
+                )}
+              </button>
+              <button
+                className=" ml-3 flex cursor-pointer items-center rounded-md bg-red-200 px-2 py-2 text-white duration-150 hover:bg-red-500"
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              >
+                <p className="mr-1 font-medium">Delete School</p>
+                <MdDelete size={20} />
+              </button>
             </div>
           </div>
-          <div className="grid grid-cols-2 items-center gap-x-2 xl:grid-cols-4 xl:gap-y-4">
+          <div className="grid w-full  grid-cols-1 items-center gap-y-2  xl:grid-cols-4 xl:gap-y-4">
             <div className="mr-2  w-auto items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <MdLocationPin size={15} className="mr-1" />
                 <p className="font-medium">Location</p>
               </div>
               <input
                 value={schoolData.location}
-                className="rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className=" w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none  "
               />
             </div>
             <div className="mr-2  w-auto items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <MdEmail size={15} className="mr-1" />
                 <p className="font-medium">Email </p>
               </div>
 
               <input
                 value={schoolData.email}
-                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className=" w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
                 name="email"
                 onChange={handleInputChange}
               />
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <MdPhone size={15} className="mr-1" />
                 <p className="font-medium">Telephone no </p>
               </div>
               <input
                 value={schoolData.telephone}
-                className=" w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className="  w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
                 name="telephone"
                 onChange={handleInputChange}
               />
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <RiAdminFill size={15} className="mr-1" />
                 <p className="font-medium">Administartor Name</p>
               </div>
               <input
                 value={schoolData.administratorName}
-                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className=" w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
                 name="administratorName"
                 onChange={handleInputChange}
               />
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <RiGovernmentFill size={15} className="mr-1" />
                 <p className="font-medium">Local Government Council</p>
               </div>
               <input
                 value={schoolData.localGovernmentCouncil}
-                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
+                className=" w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none  "
                 name="localGovernmentCouncil"
                 onChange={handleInputChange}
               />
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <BsStack size={15} className="mr-1" />
                 <p className="font-medium">Education Levels</p>
               </div>
               <input
                 value={schoolData.educationLevels}
-                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
+                className="w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none  "
                 name="educationLevels"
                 onChange={handleInputChange}
               />
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <MdPeople size={15} className="mr-1" />
                 <p className="font-medium">PTA</p>
               </div>
               <input
                 value={schoolData.pta}
-                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                className="w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
                 name="pta"
                 onChange={handleInputChange}
               />
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <MdFlag size={15} className="mr-1" />
                 <p className="font-medium">Founding Year</p>
               </div>
@@ -278,13 +283,13 @@ const School = () => {
                 min="1900"
                 max="2099"
                 value={schoolData.foundingYear}
-                className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
+                className="w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none  "
                 name="foundingYear"
                 onChange={handleInputChange}
               />
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mb-2 flex items-center">
                 <MdEditCalendar size={15} className="mr-1" />
                 <p className="font-medium">Latest Date Of Inspection</p>
               </div>
@@ -297,7 +302,7 @@ const School = () => {
                   )
                     .toISOString()
                     .slice(0, 10)}
-                  className="w-auto rounded-xl border-2 border-solid border-gray-100 px-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none"
+                  className="w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none "
                   name="latestDateOfInspection"
                   onChange={(e) => {
                     setSchoolData((prevState) => ({
@@ -310,10 +315,10 @@ const School = () => {
                 />
               )}
             </div>
-            <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+            <div className="mr-2 mt-2 items-center pl-4 text-navy-500 xl:mt-0">
+              <div className="mb-2 flex items-center">
                 <MdSchool size={15} className="mr-1" />
-                <p className="mr-2 font-medium">Student Boarding</p>
+                <p className="mr-auto font-medium xl:mr-2">Student Boarding</p>
                 <Switch
                   checked={schoolData.studentBoarding}
                   onClick={(e) => {
@@ -329,9 +334,9 @@ const School = () => {
               </p>
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
-              <div className="flex items-center">
+              <div className="mt-2 mb-2 flex items-center xl:mt-0">
                 <MdShield size={15} className="mr-1" />
-                <p className="mr-2 font-medium">Security Guard</p>
+                <p className=" mr-auto font-medium xl:mr-2">Security Guard</p>
                 <Switch
                   checked={schoolData.securityGuard}
                   onClick={(e) => {
@@ -348,12 +353,12 @@ const School = () => {
             </div>
           </div>
           <div className="flex justify-end"></div>
-          <div className="ml-4">
+          <div className="xl:ml-4">
             {sessionData.map((session, i) => {
               return <Session data={session} reset={reset} />;
             })}
           </div>
-          <div className="mt-8 ml-4 ">
+          <div className="mt-8 xl:ml-4 ">
             <p className="mb-1 text-lg font-semibold text-navy-900">
               Add a new session
             </p>
@@ -364,12 +369,16 @@ const School = () => {
               onChange={(e) => setNewSession(e.target.value)}
             />
             <button
-              className="flex items-center rounded-xl bg-navy-700 px-3 py-2 text-base font-medium text-white transition duration-200 hover:bg-navy-800 active:bg-navy-900 disabled:bg-gray-400 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
+              className="mr-2 flex items-center rounded-xl bg-navy-700 px-3 py-2 text-base font-medium text-white transition duration-200 hover:bg-navy-800 active:bg-navy-900 disabled:bg-gray-400 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
               onClick={CreateSession}
               disabled={newSession.length === 0}
             >
               Add
-              <MdAdd />
+              {creatingNewSession ? (
+                <Spinner aria-label="Spinner button example" size="sm" />
+              ) : (
+                <MdAdd />
+              )}
             </button>
           </div>
         </>

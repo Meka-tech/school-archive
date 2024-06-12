@@ -4,211 +4,211 @@ const ClassData = ({ data, update }) => {
   const classTemplate = [
     {
       class: "Nursery One",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Nursery Two",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Nursery Three",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Primary One",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Primary Two",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Primary Three",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Primary Four",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Primary Five",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Primary Six",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "Kg",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "JSS One",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "JSS Two",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "JSS Three",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "SSS One",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "SSS Two",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
     {
       class: "SSS Three",
-      males: "",
-      females: "",
-      catholic_boys: "",
-      muslim_boys: "",
-      catholic_girls: "",
-      muslim_girls: "",
-      christian_boys: "",
-      christian_girls: "",
-      males_on_scholarship: "",
-      females_on_scholarship: "",
+      males: "0",
+      females: "0",
+      catholic_boys: "0",
+      muslim_boys: "0",
+      catholic_girls: "0",
+      muslim_girls: "0",
+      christian_boys: "0",
+      christian_girls: "0",
+      males_on_scholarship: "0",
+      females_on_scholarship: "0",
     },
   ];
   const [classData, setClassData] = useState(
@@ -237,23 +237,25 @@ const ClassData = ({ data, update }) => {
   return (
     <div className="mb-1">
       <div className="relative overflow-x-auto">
-        <p className="mb-4 text-2xl font-medium text-navy-800">Student Data</p>
-        <table className=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        <p className="mb-2 text-xl font-medium text-navy-800 xl:mb-4 xl:text-2xl">
+          Student Data
+        </p>
+        <table className=" mb-20 w-[1000px] text-left text-xs text-gray-500 rtl:text-right dark:text-gray-400 xl:w-full xl:text-sm">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Class
               </th>
-              {/* <th scope="col" className="px-6 py-3">
+              {/* <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 No of Student
               </th> */}
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Males
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Females
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Total
               </th>
             </tr>
@@ -264,11 +266,11 @@ const ClassData = ({ data, update }) => {
                 <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
-                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-3 py-2 font-medium text-gray-900 dark:text-white xl:px-6 xl:py-4"
                   >
                     {classDatum.class}
                   </th>
-                  {/* <td className="px-6 py-4 text-gray-800">
+                  {/* <td className="px-3 py-2 xl:px-6 xl:py-4 text-gray-800">
                     <input
                       type="number"
                       value={""}
@@ -276,7 +278,7 @@ const ClassData = ({ data, update }) => {
                       className="border-none focus:border-white focus:outline-none"
                     />
                   </td> */}
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.males}
@@ -287,7 +289,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.females}
@@ -298,7 +300,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={`${
@@ -314,28 +316,28 @@ const ClassData = ({ data, update }) => {
             );
           })}
         </table>
-        <table className="  mb-20  w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        <table className=" mb-20  w-[1000px]  text-left text-xs text-gray-500 rtl:text-right dark:text-gray-400 xl:w-full xl:text-sm">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-1  py-1.5 xl:px-2 xl:py-3">
                 Class
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-1  py-1.5 xl:px-2 xl:py-3">
                 No of Catholic boys
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-1  py-1.5 xl:px-2 xl:py-3">
                 No of Muslim boys
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-1  py-1.5 xl:px-2 xl:py-3">
                 No of Catholic girls
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-1  py-1.5 xl:px-2 xl:py-3">
                 No of Muslim girls
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-1  py-1.5 xl:px-2 xl:py-3">
                 No of Christian boys
               </th>
-              <th scope="col" className="px-2 py-3">
+              <th scope="col" className="px-1  py-1.5 xl:px-2 xl:py-3">
                 No of Christian girls
               </th>
             </tr>
@@ -346,11 +348,11 @@ const ClassData = ({ data, update }) => {
                 <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
-                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-3 py-2 font-medium text-gray-900 dark:text-white xl:px-2 xl:py-4"
                   >
                     {classDatum.class}
                   </th>
-                  <td className="px-2 py-4 text-gray-800">
+                  <td className="px-1 py-2 text-gray-800 xl:px-2 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.catholic_boys}
@@ -361,7 +363,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-2 py-4 text-gray-800">
+                  <td className="px-1 py-2 text-gray-800 xl:px-2 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.muslim_boys}
@@ -372,7 +374,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-2 py-4 text-gray-800">
+                  <td className="px-1 py-2 text-gray-800 xl:px-2 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.catholic_girls}
@@ -383,7 +385,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-2 py-4 text-gray-800">
+                  <td className="px-1 py-2 text-gray-800 xl:px-2 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.muslim_girls}
@@ -395,7 +397,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-2 py-4 text-gray-800">
+                  <td className="px-1 py-2 text-gray-800 xl:px-2 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.christian_boys}
@@ -406,7 +408,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-2 py-4 text-gray-800">
+                  <td className="px-1 py-2 text-gray-800 xl:px-2 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.christian_girls}
@@ -426,22 +428,22 @@ const ClassData = ({ data, update }) => {
             );
           })}
         </table>
-        <p className="mb-4 text-2xl font-medium text-navy-800">
+        <p className=" mb-2 text-xl font-medium text-navy-800 xl:mb-4 xl:text-2xl">
           Students on Scholarship
         </p>
-        <table className=" mb-20 w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        <table className=" mb-20 w-[1000px] text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400 xl:w-full">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Class
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Males
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Females
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-3 py-1.5 xl:px-6 xl:py-3">
                 Total
               </th>
             </tr>
@@ -452,12 +454,12 @@ const ClassData = ({ data, update }) => {
                 <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
                   <th
                     scope="row"
-                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-3 py-2 font-medium text-gray-900 dark:text-white xl:px-6 xl:py-4"
                   >
                     {classDatum.class}
                   </th>
 
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.males_on_scholarship}
@@ -472,7 +474,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       value={classDatum.females_on_scholarship}
@@ -487,7 +489,7 @@ const ClassData = ({ data, update }) => {
                       }
                     />
                   </td>
-                  <td className="px-6 py-4 text-gray-800">
+                  <td className="px-3 py-2 text-gray-800 xl:px-6 xl:py-4">
                     <input
                       type="number"
                       readOnly

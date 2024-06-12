@@ -1,5 +1,11 @@
-import React from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Navbar from "components/navbar";
 import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
@@ -12,6 +18,7 @@ export default function Admin(props) {
   const location = useLocation();
   const [open, setOpen] = React.useState(true);
   const [currentRoute, setCurrentRoute] = React.useState("Main Dashboard");
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     window.addEventListener("resize", () =>
@@ -59,6 +66,15 @@ export default function Admin(props) {
   };
 
   document.documentElement.dir = "ltr";
+
+  const user = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!user || !token) {
+      navigate("/auth/sign-in");
+    }
+  }, [user, token]);
   return (
     <div className="flex h-full w-full">
       <ToastContainer

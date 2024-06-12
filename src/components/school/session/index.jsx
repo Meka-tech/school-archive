@@ -105,7 +105,7 @@ const Session = ({ data, reset }) => {
       </Modal>
       <div className="flex ">
         <button
-          className="flex w-fit items-center rounded-lg bg-navy-900 px-2 py-1 text-lg font-medium text-white"
+          className="flex w-fit items-center rounded-lg bg-navy-900 px-2 font-medium text-white xl:py-1 xl:text-lg"
           onClick={() => setOpen(!open)}
         >
           Session : {data.session}
@@ -134,10 +134,10 @@ const Session = ({ data, reset }) => {
       </div>
 
       {open && (
-        <div className="mt-2 w-full">
+        <div className=" mt-4 w-full xl:mt-2">
           <div className="mb-2 flex">
             <input
-              className="rounded-xl border-2 border-solid border-white px-4 py-2 text-xl font-semibold text-navy-900 focus:border-gray-300 focus:outline-none"
+              className="rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-semibold text-navy-900 focus:border-gray-300 focus:outline-none xl:px-4 xl:py-2 xl:text-xl"
               value={sessionName}
               onChange={(e) => setSessionName(e.target.value)}
             />
@@ -150,8 +150,8 @@ const Session = ({ data, reset }) => {
             return <Term key={i} data={term} reset={reset} />;
           })}
 
-          <div className="my-8 ml-4 ">
-            <p className="mb-1 text-lg font-semibold text-navy-900">
+          <div className="my-8 xl:ml-4 ">
+            <p className="mb-1 font-semibold text-navy-900 xl:text-lg">
               Add a new term
             </p>
             <Dropdown
@@ -178,7 +178,7 @@ const Session = ({ data, reset }) => {
             </Dropdown>
 
             <button
-              className="mt-4 flex items-center rounded-xl bg-navy-700 px-3 py-2 text-base font-medium text-white transition duration-200 hover:bg-navy-800 active:bg-navy-900 disabled:bg-gray-400 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
+              className="mt-4  mr-1 flex items-center rounded-xl bg-navy-700 px-3 py-2 text-sm font-medium text-white transition duration-200 hover:bg-navy-800 active:bg-navy-900 disabled:bg-gray-400 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30 xl:text-base"
               onClick={CreateNewTerm}
               disabled={newTerm.length === 0}
             >

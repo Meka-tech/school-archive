@@ -152,7 +152,7 @@ const Home = () => {
             </div>
           ) : !searching && searched ? (
             <>
-              <div className="flex w-full items-center justify-between">
+              <div className="mb-2 flex w-full items-center justify-between">
                 <p className="mb-2 ml-2 font-medium text-gray-800">
                   Search results: {searchResults.length}
                 </p>
@@ -164,7 +164,7 @@ const Home = () => {
                 </button>
               </div>
 
-              <div className="mb-2 grid h-5/6 w-full grid-cols-4 flex-wrap justify-between gap-x-4 overflow-auto">
+              <div className=" mb-10 flex  h-5/6 w-full grid-cols-4 grid-rows-3 flex-col gap-4 overflow-auto xl:mb-2 xl:grid xl:gap-y-10">
                 {searchResults.map((school, i) => {
                   return (
                     <SchoolCard

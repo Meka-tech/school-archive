@@ -133,7 +133,7 @@ const School = () => {
   }, [schoolData, OGData]);
 
   return (
-    <div className="min-h-60 relative ml-auto mr-auto mt-5 h-fit w-full rounded-xl bg-white px-3 py-2 xl:px-6 xl:py-4">
+    <div className="min-h-60 relative ml-auto mr-auto mt-5 h-fit w-full rounded-xl bg-white px-3 py-4 xl:px-6 ">
       {loading && (
         <div className="flex h-screen items-center justify-center text-center xl:h-96">
           <Spinner size={"xl"} />
@@ -154,7 +154,7 @@ const School = () => {
               action={deleteSchool}
             />
           </Modal>
-          <div className="mb-2 flex flex-col-reverse items-center justify-between xl:flex-row">
+          <div className="mb-4 flex flex-col-reverse items-center justify-between xl:flex-row">
             <input
               className=" w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-xl font-semibold text-navy-900 focus:border-gray-300 focus:outline-none xl:w-1/2 xl:px-4 xl:py-2 xl:text-2xl "
               value={schoolData.name}
@@ -189,7 +189,7 @@ const School = () => {
               </button>
             </div>
           </div>
-          <div className="grid w-full  grid-cols-1 items-center gap-y-2  xl:grid-cols-4 xl:gap-y-4">
+          <div className="grid w-full  grid-cols-1 items-center gap-y-6  xl:grid-cols-4 xl:gap-y-4">
             <div className="mr-2  w-auto items-center pl-4 text-navy-500">
               <div className="mb-2 flex items-center">
                 <MdLocationPin size={15} className="mr-1" />

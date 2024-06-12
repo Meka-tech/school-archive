@@ -91,6 +91,13 @@ export default function Admin(props) {
         transition={Bounce}
       />
       <Sidebar open={open} onClose={() => setOpen(false)} />
+      {open && (
+        <div
+          className="absolute top-0 left-0 z-40 h-screen w-full bg-gray-800 opacity-50 lg:hidden"
+          onClick={() => setOpen(false)}
+        ></div>
+      )}
+
       {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
         {/* Main Content */}

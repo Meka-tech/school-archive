@@ -60,16 +60,9 @@ const Dashboard = () => {
 
   const CancelSearch = () => {
     setSearchResults([]);
-    setTotalPages(0);
     GetAllSchools();
     setSearchInput("");
   };
-
-  useEffect(() => {
-    if (searchInput.length > 0) {
-      SearchSchool();
-    }
-  }, [currentPage, BaseUrl]);
 
   useEffect(() => {
     if (searchInput.length === 0 && !searched) {
@@ -100,7 +93,7 @@ const Dashboard = () => {
         </button>
       </div>
 
-      <div className="h-[600px] w-full xl:h-[550px]">
+      <div className="h-[620px] w-full xl:h-[550px]">
         {/* loading */}
         {searching && (
           <div className="flex h-full items-center justify-center text-center">
@@ -109,15 +102,23 @@ const Dashboard = () => {
         )}
 
         {noResults ? (
-          <div className="flex h-full w-full flex-col items-center justify-center">
-            <MdSearchOff size={50} className="mb-2 text-red-500" />
-            <p className=" text-2xl font-thin text-red-500 xl:text-3xl">
-              No school found !
-            </p>
-          </div>
+          <>
+            <button
+              className=" ml-auto flex items-center rounded-xl bg-red-300 px-2 py-2 text-base font-medium text-white transition duration-200 hover:bg-red-500 active:bg-navy-900 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
+              onClick={CancelSearch}
+            >
+              <MdClear />
+            </button>
+            <div className="flex h-full w-full flex-col items-center justify-center">
+              <MdSearchOff size={50} className="mb-2 text-red-500" />
+              <p className=" text-2xl font-thin text-red-500 xl:text-3xl">
+                No school found !
+              </p>
+            </div>
+          </>
         ) : !searching && searched ? (
           <>
-            <div className="flex w-full items-center justify-between">
+            <div className="mb-2 flex w-full items-center justify-between">
               <p className="mb-2 ml-2 font-medium text-gray-800">
                 Search results: {searchResults.length}
               </p>
@@ -129,7 +130,7 @@ const Dashboard = () => {
               </button>
             </div>
 
-            <div className="mb-2 grid h-5/6 w-full grid-cols-4 flex-wrap justify-between gap-x-4 overflow-auto">
+            <div className=" mb-4 flex  h-5/6 w-full grid-cols-4 grid-rows-3 flex-col gap-4 overflow-auto xl:mb-2 xl:grid xl:gap-y-10">
               {searchResults.map((school, i) => {
                 return (
                   <SchoolCard

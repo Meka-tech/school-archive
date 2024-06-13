@@ -196,6 +196,8 @@ const School = () => {
                 <p className="font-medium">Location</p>
               </div>
               <input
+                name="location"
+                onChange={handleInputChange}
                 value={schoolData.location}
                 className=" w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none  "
               />

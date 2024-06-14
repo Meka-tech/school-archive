@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { MdLibraryBooks, MdSearch } from "react-icons/md";
 
 import { FaBloggerB } from "react-icons/fa";
+import Footer from "components/footer/Footer";
 
 const Home = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -14,7 +15,7 @@ const Home = () => {
 
   const SearchSchool = async (e) => {
     e.preventDefault();
-    navigate("/search-school", { state: { input: searchInput } });
+    navigate("/schools", { state: { input: searchInput } });
   };
 
   return (
@@ -104,6 +105,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 };

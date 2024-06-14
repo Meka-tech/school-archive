@@ -25,7 +25,7 @@ const LandingPageNav = () => {
           School <span className="font-medium">ARCHIVE</span>
         </div>
         <div className="ml-auto flex items-center">
-          {/* <div
+          <div
             className="relative mr-10 cursor-pointer"
             onMouseEnter={() => setActiveHover("home")}
             onMouseLeave={() => setActiveHover("")}
@@ -36,13 +36,15 @@ const LandingPageNav = () => {
           </div>
           <div
             className="relative mr-10 cursor-pointer"
-            onMouseEnter={() => setActiveHover("about")}
+            onMouseEnter={() => setActiveHover("schools")}
             onMouseLeave={() => setActiveHover("")}
-            onClick={() => navigate("/about")}
+            onClick={() => navigate("/schools")}
           >
-            <p className="font-poppins font-medium text-[#065f46]">About</p>
-            <ActiveBar hover={path === "/about" || activeHover === "about"} />
-          </div> */}
+            <p className="font-poppins font-medium text-[#065f46]">Schools</p>
+            <ActiveBar
+              hover={path === "/schools" || activeHover === "schools"}
+            />
+          </div>
         </div>
       </div>
     </nav>

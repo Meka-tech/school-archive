@@ -17,73 +17,96 @@ const HomeSchoolCard = ({ data }) => {
   const navigate = useNavigate();
   return (
     <main
-      className=" bg-whit w-full cursor-pointer rounded-2xl border-2 border-solid bg-white px-3 py-2 shadow-lg xl:w-10/12  xl:px-6 xl:py-4 "
-      onClick={() => navigate("/admin/school", { state: { id: data._id } })}
+      className=" w-full cursor-pointer rounded-2xl bg-white px-3 py-4 shadow-lg shadow-gray-300 xl:w-10/12  xl:px-6 "
+      onClick={() => navigate("/school", { state: { id: data?._id } })}
     >
-      <p className="mb-2 text-xl font-semibold text-gray-800 xl:text-2xl">
-        {data.name}
+      <p className="mb-1.5 text-lg font-semibold xl:mb-3 xl:text-2xl">
+        {data?.name}
       </p>
       <div className="grid w-full grid-cols-2 items-center justify-between gap-y-2">
-        <div className="flex items-center text-gray-700">
-          <MdLocationPin size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">{data.location}</p>
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <MdLocationPin size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">{data?.location}</p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <MdEmail size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">{data.email}</p>
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <MdEmail size={15} className="text-[#34d399]" />
+          </div>
+
+          <p className="text-xs font-medium xl:text-base">{data?.email}</p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <MdPhone size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">{data.telephone}</p>
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <MdPhone size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">{data?.telephone}</p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <MdFlag size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">
-            {data.foundingYear}
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <MdFlag size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">
+            {data?.foundingYear}
           </p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <RiAdminFill size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">
-            {data.administratorName}
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <RiAdminFill size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">
+            {data?.administratorName}
           </p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <BsStack size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">
-            {data.educationLevels} levels
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <BsStack size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">
+            {data?.educationLevels} levels
           </p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <RiGovernmentFill size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">
-            {data.localGovernmentCouncil}
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <RiGovernmentFill size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">
+            {data?.localGovernmentCouncil}
           </p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <MdEditCalendar size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <MdEditCalendar size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">
             {new Date(data?.latestDateOfInspection || "1995-12-17T03:24:00")
               .toISOString()
               .slice(0, 10)}
           </p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <MdPeople size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">{data.pta}</p>
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <MdPeople size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">{data?.pta}</p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <MdSchool size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">
-            {data.studentBoarding
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <MdSchool size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">
+            {data?.studentBoarding
               ? "Has Student Boarding"
               : "No Student Boarding"}
           </p>
         </div>
-        <div className="flex items-center text-gray-700">
-          <MdShield size={15} className="mr-1" />
-          <p className="text-sm font-medium xl:text-base">
-            {data.securityGuard ? "Has Security Guard" : "No Security Guard"}
+        <div className="flex items-center">
+          <div className=" mr-0.5 rounded-full bg-[#ecfdf5] p-1 xl:mr-1 xl:p-1.5">
+            <MdShield size={15} className="text-[#34d399]" />
+          </div>
+          <p className="text-xs font-medium xl:text-base">
+            {data?.securityGuard ? "Has Security Guard" : "No Security Guard"}
           </p>
         </div>
       </div>

@@ -67,8 +67,10 @@ const Dashboard = () => {
   useEffect(() => {
     if (searchInput.length === 0 && !searched) {
       GetAllSchools();
+    } else {
+      SearchSchool();
     }
-  }, [currentPage]);
+  }, [currentPage, searchInput.length, searched]);
 
   return (
     <div>

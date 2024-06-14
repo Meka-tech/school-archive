@@ -1,130 +1,108 @@
 import LandingPageNav from "components/navbar/landing-page-nav";
 import React, { useEffect, useState } from "react";
-import StorageImg from "../../assets/img/landing-page/file-storage.png";
 import BannerImg from "../../assets/img/landing-page/archive-new.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { MdClear, MdSearch, MdSearchOff } from "react-icons/md";
-import { Spinner } from "flowbite-react";
-import SchoolCard from "components/card/SchoolCard";
-import ResponsivePagination from "react-responsive-pagination";
-import HomeSchoolCard from "components/card/HomeSchoolCard";
+import { MdLibraryBooks, MdSearch } from "react-icons/md";
+
+import { FaBloggerB } from "react-icons/fa";
 
 const Home = () => {
-  const BaseUrl = process.env.REACT_APP_BASE_URL;
   const [searchInput, setSearchInput] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [searchResults, setSearchResults] = useState([]);
-  const [searching, setSearching] = useState(false);
-  const [searched, setSearched] = useState(false);
-  const [noResults, setNoResults] = useState(false);
+
   const navigate = useNavigate();
 
   const SearchSchool = async (e) => {
     e.preventDefault();
-    setSearching(true);
-    setNoResults(false);
-    try {
-      const res = await axios.get(
-        `${BaseUrl}/school/search?name=${searchInput}&page=${currentPage}&limit=12`
-      );
-      setSearched(true);
-      setNoResults(false);
-      setSearchResults(res.data.results);
-      setTotalPages(res.data.totalPages);
-    } catch (e) {
-      setNoResults(true);
-      setSearchResults([]);
-      setTotalPages(0);
-    } finally {
-      setSearching(false);
-    }
+    navigate("/search-school", { state: { input: searchInput } });
   };
-
-  const CancelSearch = () => {
-    setSearchResults([]);
-    setTotalPages(0);
-    setSearchInput("");
-    setNoResults(false);
-  };
-
-  useEffect(() => {
-    if (searchInput.length > 0) {
-      SearchSchool();
-    }
-  }, [currentPage, BaseUrl]);
 
   return (
     <main className="h-screen w-full bg-white">
       <LandingPageNav />
-      <div className="relative flex h-[200px] w-full xl:h-[380px]">
-        <div className="absolute top-0 flex h-[180px] w-full items-center justify-center overflow-hidden bg-[#022c22] xl:h-[360px]">
-          <h1 className="z-10 text-base font-bold text-white xl:text-5xl">
-            Search For Schools in the catholic Diocese of Idah
-          </h1>
+      <div className="relative flex h-[650px] w-full xl:h-[600px]">
+        <div className="absolute top-0 flex  h-full w-full  bg-[#022c22]">
           <img
             src={BannerImg}
             alt="Banner"
-            className="absolute top-0 h-full w-full object-cover opacity-50"
+            className="absolute top-0 h-full w-full object-cover opacity-30"
           />
-        </div>
-        <div className="flex w-full items-center justify-center">
-          <form className=" absolute bottom-0 z-30  ml-auto mr-auto flex h-fit w-11/12 items-center justify-between rounded-lg border-solid border-white bg-white px-2 py-1.5 shadow-xl duration-100 ease-in xl:mt-20 xl:w-7/12 xl:px-4 xl:py-3 ">
-            <input
-              placeholder="Search schools..."
-              className=" ml-1 w-11/12 text-sm placeholder:text-gray-300  xl:ml-2  xl:text-base"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-            <button
-              type="submit"
-              className="cursor-pointer rounded-full  px-2 duration-100 ease-in"
-              onClick={SearchSchool}
-              disabled={searchInput.length < 1}
-            >
-              <MdSearch className=" text-gray-500" size={25} />
-            </button>
-          </form>
-        </div>
-      </div>
+          <div className="z-10 flex h-full w-full flex-col  justify-center px-5 xl:h-full xl:px-20">
+            <div className="xl:w-1/2">
+              <h1 className="mb-5 text-left text-4xl font-extrabold capitalize text-white xl:mb-10 xl:text-6xl ">
+                Welcome to Idah's <br /> schools{" "}
+                <span className=" text-green-500">Archive</span>
+              </h1>
 
-      <div className=" w-full items-center justify-center bg-white px-4 py-3 xl:py-16 xl:px-10">
-        {searching && (
-          <div className="flex h-full items-center justify-center text-center">
-            <Spinner size={"xl"} />
-          </div>
-        )}
-        {noResults && (
-          <>
-            <button
-              className=" ml-auto flex items-center rounded-xl bg-red-300 px-2 py-2 text-base font-medium text-white transition duration-200 hover:bg-red-500 active:bg-navy-900 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
-              onClick={CancelSearch}
-            >
-              Clear Search <MdClear className="ml-2" />
-            </button>
-            <div className="flex h-full w-full flex-col items-center justify-center">
-              <MdSearchOff size={50} className="mb-2 text-red-500" />
-              <p className=" text-2xl font-thin text-red-500 xl:text-3xl">
-                No school found !
+              <p className="text-left text-xl text-white xl:text-2xl">
+                Effortlessly explore an extensive collection of schools,
+                sessions, terms, and student data with our powerful,
+                user-friendly system designed for comprehensive school
+                administration.
               </p>
             </div>
-          </>
-        )}
-        {!searching && searchResults.length > 0 && (
-          <>
-            <div className="mb-10 ml-auto mr-auto grid w-full grid-cols-1 items-center justify-center gap-x-10 gap-y-8  xl:w-10/12 xl:grid-cols-2">
-              {searchResults.map((school, i) => {
-                return <HomeSchoolCard data={school} />;
-              })}
+            <form className="mt-10 flex h-fit w-full items-center justify-between rounded-lg border-solid border-white bg-white px-2 py-3 shadow-xl duration-100 ease-in xl:mt-10 xl:w-6/12 xl:px-4  ">
+              <input
+                placeholder="Search Schools..."
+                className=" ml-1 w-11/12 text-sm placeholder:text-gray-400  xl:ml-2  xl:text-lg"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="cursor-pointer rounded-lg px-2 duration-100 ease-in"
+                onClick={SearchSchool}
+                disabled={searchInput.length < 1}
+              >
+                <MdSearch className=" text-gray-500" size={25} />
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div className="bg-gray-50 py-24">
+        <h2 className="text-center text-3xl font-bold  xl:text-4xl">
+          Features
+        </h2>
+        <div className="ml-auto mr-auto mt-16 grid w-9/12 grid-cols-1 items-center justify-center gap-y-8 gap-x-10 xl:grid-cols-3 ">
+          <div className="flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white px-4 py-6 shadow-2xl xl:h-full xl:px-6 xl:py-10">
+            <div className="mb-2 flex items-center justify-center rounded-full bg-[#d1fae5] p-2 xl:mb-5">
+              <MdSearch size={25} className="text-[#10b981]" />
             </div>
-            <ResponsivePagination
-              current={currentPage}
-              total={totalPages}
-              onPageChange={setCurrentPage}
-            />
-          </>
-        )}
+            <p className="mb-2 text-center text-xl font-semibold">
+              Explore Schools
+            </p>
+            <p className="text-center">
+              Access detailed information and historical data of schools. Use
+              advanced filters to find schools by name, location, or unique
+              identifier efficiently.
+            </p>
+          </div>
+          <div className="flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white px-4 py-5 shadow-2xl xl:h-full xl:px-6 xl:py-10">
+            <div className="mb-2 flex items-center justify-center rounded-full bg-[#cffafe] p-2 xl:mb-5">
+              <MdLibraryBooks size={25} className="text-[#06b6d4]" />
+            </div>
+            <p className="mb-2 text-center text-xl font-semibold">
+              Detailed Information Access
+            </p>
+            <p className="text-center">
+              View detailed Information of all sessions , terms, student data,
+              staff data and lots more of a schools
+            </p>
+          </div>
+          <div className=" flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white py-5 px-4 shadow-2xl xl:h-full xl:px-6 xl:py-10">
+            <div className="mb-2 flex items-center justify-center rounded-full bg-[#ffe4e6] p-2 xl:mb-5">
+              <FaBloggerB size={25} className="text-[#f43f5e]" />
+            </div>
+            <p className="mb-2 text-center text-xl font-semibold">
+              Blog System
+            </p>
+            <p className="text-center">
+              An integrated blog system will allow users to read and engage with
+              posts, fostering communication and community engagement
+            </p>
+          </div>
+        </div>
       </div>
     </main>
   );

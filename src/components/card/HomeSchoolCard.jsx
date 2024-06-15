@@ -15,6 +15,10 @@ import { useNavigate } from "react-router-dom";
 
 const HomeSchoolCard = ({ data }) => {
   const navigate = useNavigate();
+
+  const RenderArrayAsText = (array) => {
+    return <div>{array.join(", ")}</div>;
+  };
   return (
     <main
       className=" w-full cursor-pointer rounded-2xl bg-white px-3 py-4 shadow-lg shadow-gray-300 xl:w-10/12  xl:px-6 "
@@ -64,7 +68,7 @@ const HomeSchoolCard = ({ data }) => {
             <BsStack size={15} className="text-[#34d399]" />
           </div>
           <p className="text-xs font-medium xl:text-base">
-            {data?.educationLevels} levels
+            {RenderArrayAsText(data?.educationLevels)}
           </p>
         </div>
         <div className="flex items-center">

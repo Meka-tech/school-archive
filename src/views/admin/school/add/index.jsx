@@ -1,7 +1,7 @@
 import axios from "axios";
 import InputField from "components/fields/InputField";
 import Switch from "components/switch";
-import { Spinner } from "flowbite-react";
+import { Dropdown, Spinner } from "flowbite-react";
 import { Formik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ const AddSchool = () => {
   const [loading, setLoading] = useState(false);
   const [studentBoarding, setStudentBoarding] = useState(false);
   const [securityGuard, setSecurityGuard] = useState(false);
+  const [educationLevels, setEducationLevels] = useState([]);
   const navigate = useNavigate();
 
   const SchoolSchema = Yup.object().shape({
@@ -22,10 +23,24 @@ const AddSchool = () => {
     telephone: Yup.string().required(),
     email: Yup.string().required(),
     foundingYear: Yup.string().required(),
-    educationLevels: Yup.string().required(),
     pta: Yup.string(),
     latestDateOfInspection: Yup.string(),
   });
+
+  const RenderArrayAsText = (array) => {
+    return <div>{array.join(", ")}</div>;
+  };
+
+  const handleDropdown = (value) => {
+    let levels = educationLevels;
+    const index = levels.indexOf(value);
+    if (index > -1) {
+      levels.splice(index, 1);
+    } else {
+      levels.push(value);
+    }
+    setEducationLevels([...levels]);
+  };
 
   return (
     <div className="ml-auto mr-auto mt-5 w-full  rounded-xl bg-white px-3 py-4 xl:w-7/12 xl:px-6">
@@ -41,7 +56,6 @@ const AddSchool = () => {
           telephone: "",
           email: "",
           foundingYear: "",
-          educationLevels: "",
           pta: "",
           latestDateOfInspection: "",
         }}
@@ -55,6 +69,7 @@ const AddSchool = () => {
             ).toISOString(),
             studentBoarding,
             securityGuard,
+            educationLevels,
           };
 
           try {
@@ -79,7 +94,7 @@ const AddSchool = () => {
           isSubmitting,
         }) => (
           <>
-            <div className="grid grid-cols-1 items-center justify-center gap-2 xl:grid-cols-2 xl:gap-4">
+            <div className="relative grid grid-cols-1 items-center justify-center gap-2 xl:grid-cols-2 xl:gap-4">
               <InputField
                 label="Name"
                 name="name"
@@ -135,14 +150,31 @@ const AddSchool = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <InputField
-                label="Education Levels"
-                value={values.educationLevels}
-                name="educationLevels"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                state={errors.educationLevels ? "error" : ""}
-              />
+              <div className="relative w-full">
+                <p className="mb-2 ml-3 text-xs font-bold  text-navy-700 dark:text-white xl:text-sm">
+                  Education Levels
+                </p>
+                <Dropdown
+                  size={"md"}
+                  label={
+                    educationLevels.length > 0
+                      ? RenderArrayAsText(educationLevels)
+                      : "Select Levels"
+                  }
+                  className="w-full"
+                >
+                  <Dropdown.Item onClick={() => handleDropdown("Nursery")}>
+                    Nursery
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleDropdown("Primary")}>
+                    Primary
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleDropdown("Secondary")}>
+                    Secondary
+                  </Dropdown.Item>
+                </Dropdown>
+              </div>
+
               <InputField
                 type={"number"}
                 min="1900"

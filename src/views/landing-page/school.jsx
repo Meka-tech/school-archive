@@ -59,6 +59,10 @@ const School = () => {
     GetSchoolById();
   }, []);
 
+  const RenderArrayAsText = (array) => {
+    return <div>{array.join(", ")}</div>;
+  };
+
   return (
     <main className="bg-white">
       <LandingPageNav />
@@ -131,7 +135,7 @@ const School = () => {
                   <p className="font-medium">Education Levels</p>
                 </div>
                 <p className="w-full rounded-xl  px-2 text-lg font-normal text-[#064e3b] xl:py-1   ">
-                  {schoolData.educationLevels}
+                  {RenderArrayAsText(schoolData.educationLevels)}
                 </p>
               </div>
               <div className="mr-2 items-center pl-4 text-[#10b981]">

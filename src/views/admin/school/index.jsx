@@ -3,7 +3,7 @@ import SwitchField from "components/fields/SwitchField";
 import InputField from "components/fields/TextField";
 import Session from "components/school/session";
 import Switch from "components/switch";
-import { Spinner } from "flowbite-react";
+import { Dropdown, Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { BsStack } from "react-icons/bs";
 import {
@@ -25,6 +25,7 @@ import { Modal, Toast } from "flowbite-react";
 
 import DeleteModal from "components/modals/delete modal";
 import { toast } from "react-toastify";
+import { IoMdCheckmark } from "react-icons/io";
 
 const School = () => {
   const state = useLocation().state;
@@ -32,7 +33,7 @@ const School = () => {
   const id = state?.id;
   const BaseUrl = process.env.REACT_APP_BASE_URL;
   const [OGData, setOGData] = useState({});
-  const [schoolData, setSchoolData] = useState({});
+  const [schoolData, setSchoolData] = useState({ educationLevels: [] });
   const [sessionData, setSessionData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [saveDisabled, setSaveDisabled] = useState(true);
@@ -124,6 +125,21 @@ const School = () => {
     }));
   };
 
+  const handleDropDown = (value) => {
+    setSchoolData((prevObject) => {
+      const educationLevels = [...prevObject.educationLevels];
+      const index = educationLevels.indexOf(value);
+      if (index > -1) {
+        educationLevels.splice(index, 1);
+      } else {
+        educationLevels.push(value);
+      }
+      return { ...prevObject, educationLevels };
+    });
+  };
+  const RenderArrayAsText = (array) => {
+    return <div>{array.join(", ")}</div>;
+  };
   useEffect(() => {
     if (OGData.school === schoolData) {
       setSaveDisabled(true);
@@ -256,12 +272,45 @@ const School = () => {
                 <BsStack size={15} className="mr-1" />
                 <p className="font-medium">Education Levels</p>
               </div>
-              <input
-                value={schoolData.educationLevels}
-                className="w-full rounded-xl border-2 border-solid border-gray-100 px-2 py-1 text-lg font-normal text-navy-900 focus:border-gray-300 focus:outline-none  "
-                name="educationLevels"
-                onChange={handleInputChange}
-              />
+              <Dropdown
+                inline
+                label={
+                  schoolData && schoolData?.educationLevels.length > 0
+                    ? RenderArrayAsText(schoolData.educationLevels)
+                    : "Select Levels"
+                }
+              >
+                <Dropdown.Item
+                  onClick={() => {
+                    handleDropDown("Nursery");
+                  }}
+                >
+                  Nursery
+                  {schoolData?.educationLevels.includes("Nursery") && (
+                    <IoMdCheckmark className="ml-2" />
+                  )}
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    handleDropDown("Primary");
+                  }}
+                >
+                  Primary
+                  {schoolData?.educationLevels.includes("Primary") && (
+                    <IoMdCheckmark className="ml-2" />
+                  )}
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    handleDropDown("Secondary");
+                  }}
+                >
+                  Secondary
+                  {schoolData?.educationLevels.includes("Secondary") && (
+                    <IoMdCheckmark className="ml-2" />
+                  )}
+                </Dropdown.Item>
+              </Dropdown>
             </div>
             <div className="mr-2 items-center pl-4 text-navy-500">
               <div className="mb-2 flex items-center">

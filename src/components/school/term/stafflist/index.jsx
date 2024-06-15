@@ -136,7 +136,7 @@ const StaffList = ({ data, update }) => {
             </thead>
             {staffListData.map((staff, index) => {
               return (
-                <tbody>
+                <tbody key={index}>
                   <tr
                     className=" relative border-b bg-white dark:border-gray-700 dark:bg-gray-800"
                     onMouseOver={() => {

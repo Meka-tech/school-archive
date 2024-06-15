@@ -27,7 +27,7 @@ const School = () => {
   const id = state?.id;
   const BaseUrl = process.env.REACT_APP_BASE_URL;
   const [OGData, setOGData] = useState({});
-  const [schoolData, setSchoolData] = useState({});
+  const [schoolData, setSchoolData] = useState({ educationLevels: [] });
   const [sessionData, setSessionData] = useState([]);
   const [loading, setLoading] = useState(false);
 

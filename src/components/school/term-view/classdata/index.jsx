@@ -243,7 +243,7 @@ const ClassData = ({ data }) => {
           </thead>
           {classData.map((classDatum, index) => {
             return (
-              <tbody>
+              <tbody key={index}>
                 <tr className="border-b bg-white dark:border-[#047857] dark:bg-[#065f46]">
                   <th
                     scope="row"
@@ -303,7 +303,7 @@ const ClassData = ({ data }) => {
           </thead>
           {classData.map((classDatum, index) => {
             return (
-              <tbody>
+              <tbody key={index}>
                 <tr className="border-b bg-white dark:border-[#047857] dark:bg-[#065f46]">
                   <th
                     scope="row"
@@ -356,7 +356,7 @@ const ClassData = ({ data }) => {
           </thead>
           {classData.map((classDatum, index) => {
             return (
-              <tbody>
+              <tbody key={index}>
                 <tr className="border-b bg-white dark:border-[#047857] dark:bg-[#065f46]">
                   <th
                     scope="row"

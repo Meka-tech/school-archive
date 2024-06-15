@@ -13,8 +13,9 @@ import {
 import { useLocation } from "react-router-dom";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
-import { Dropdown, Spinner } from "flowbite-react";
+import { Dropdown, Modal, Spinner } from "flowbite-react";
 import Footer from "components/footer/Footer";
+import FilterModal from "components/modals/filterModal";
 
 const Schools = () => {
   const state = useLocation().state;
@@ -28,6 +29,7 @@ const Schools = () => {
   const [searching, setSearching] = useState(false);
   const [searched, setSearched] = useState(false);
   const [sortText, setSortText] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [noResults, setNoResults] = useState(false);
 
@@ -130,6 +132,15 @@ const Schools = () => {
   return (
     <main className="bg-white">
       <LandingPageNav />
+      <Modal
+        show={isModalOpen}
+        size={"sm"}
+        onClose={() => setIsModalOpen(false)}
+        popup
+        dismissible
+      >
+        <FilterModal />
+      </Modal>
       <div className="py-2.5 px-2 shadow-sm xl:py-5 xl:px-4">
         <form className="flex w-full flex-col items-center px-2 py-1 xl:flex-row xl:px-4 xl:py-2">
           <div className="flex w-full items-center rounded-lg bg-gray-50 px-3 py-2 xl:w-2/5">
@@ -145,7 +156,9 @@ const Schools = () => {
           <div className="mt-2 flex w-full items-center justify-between xl:ml-auto xl:mt-0 xl:w-2/5  xl:justify-end">
             <div
               className="flex cursor-pointer items-center rounded-lg border-2 border-gray-200 px-3 py-1.5 text-[#71717a] xl:mr-3"
-              onClick={() => {}}
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
             >
               <p className="mr-1">Filter</p>
               <MdFilterList />

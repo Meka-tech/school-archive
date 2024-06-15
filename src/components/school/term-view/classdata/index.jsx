@@ -266,15 +266,9 @@ const ClassData = ({ data }) => {
                     <p>{classDatum.females}</p>
                   </td>
                   <td className="px-3 py-2 text-[#065f46] xl:px-6 xl:py-4">
-                    <input
-                      type="number"
-                      value={`${
-                        Number(classDatum.males) + Number(classDatum.females)
-                      }`}
-                      placeholder={"nil"}
-                      disabled={true}
-                      className="border-none focus:outline-none disabled:bg-white"
-                    />
+                    <p>{`${
+                      Number(classDatum.males) + Number(classDatum.females)
+                    }`}</p>
                   </td>
                 </tr>
               </tbody>

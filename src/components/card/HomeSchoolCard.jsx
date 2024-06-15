@@ -48,7 +48,7 @@ const HomeSchoolCard = ({ data }) => {
             <MdFlag size={15} className="text-[#34d399]" />
           </div>
           <p className="text-xs font-medium xl:text-base">
-            {data?.foundingYear}
+            Founded: {data?.foundingYear}
           </p>
         </div>
         <div className="flex items-center">
@@ -80,6 +80,7 @@ const HomeSchoolCard = ({ data }) => {
             <MdEditCalendar size={15} className="text-[#34d399]" />
           </div>
           <p className="text-xs font-medium xl:text-base">
+            last Inspection date:{" "}
             {new Date(data?.latestDateOfInspection || "1995-12-17T03:24:00")
               .toISOString()
               .slice(0, 10)}

@@ -62,7 +62,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-gray-50 py-24">
-        <h2 className="text-center text-3xl font-bold  xl:text-4xl">
+        <h2 className="text-center text-3xl font-bold text-[#065f46]  xl:text-4xl">
           Features
         </h2>
         <div className="ml-auto mr-auto mt-16 grid w-9/12 grid-cols-1 items-center justify-center gap-y-8 gap-x-10 xl:grid-cols-3 ">

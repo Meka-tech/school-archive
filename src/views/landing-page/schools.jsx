@@ -3,6 +3,7 @@ import HomeSchoolCard from "components/card/HomeSchoolCard";
 import LandingPageNav from "components/navbar/landing-page-nav";
 import { useEffect, useState } from "react";
 import {
+  MdCancel,
   MdClear,
   MdFilter,
   MdFilter1,
@@ -30,6 +31,7 @@ const Schools = () => {
   const [searched, setSearched] = useState(false);
   const [sortText, setSortText] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [filterOptions, setFilterOptions] = useState({});
 
   const [noResults, setNoResults] = useState(false);
 
@@ -54,6 +56,10 @@ const Schools = () => {
       const res = await axios.get(
         `${BaseUrl}/school?page=${currentPage}&limit=${limit}${
           sort ? `&sort=${sortOption}` : ""
+        }${
+          Object.keys(filterOptions).length > 0
+            ? `&filter=${JSON.stringify(filterOptions)}`
+            : ""
         }`
       );
       setSearched(false);
@@ -89,6 +95,10 @@ const Schools = () => {
       const res = await axios.get(
         `${BaseUrl}/school/search?search=${searchInput}&page=${currentPage}&limit=${limit}${
           sort ? `&sort=${sortOption}` : ""
+        }${
+          Object.keys(filterOptions).length > 0
+            ? `&filter=${filterOptions}`
+            : ""
         }`
       );
       setSearchResults(res.data.results);
@@ -105,13 +115,14 @@ const Schools = () => {
   const CancelSearch = () => {
     setSearchResults([]);
     setSortText("");
-    GetAllSchools(sortText);
     setSearchInput("");
+    setFilterOptions({});
+    GetAllSchools(sortText);
   };
 
   const SetSorting = (sortText) => {
     setSortText(sortText);
-    console.log(sortText);
+
     if (searchInput.length > 0) {
       SearchSchool(sortText);
     } else {
@@ -129,20 +140,33 @@ const Schools = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (searchInput) {
+      SearchSchool(sortText);
+    } else {
+      GetAllSchools(sortText);
+    }
+  }, [filterOptions]);
+
+  console.log(searchResults);
   return (
     <main className="bg-white">
       <LandingPageNav />
       <Modal
         show={isModalOpen}
-        size={"sm"}
+        size={"md"}
         onClose={() => setIsModalOpen(false)}
         popup
         dismissible
       >
-        <FilterModal />
+        <FilterModal
+          selectFilterOptions={(options) => setFilterOptions(options)}
+          close={() => setIsModalOpen(false)}
+          options={filterOptions}
+        />
       </Modal>
       <div className="py-2.5 px-2 shadow-sm xl:py-5 xl:px-4">
-        <form className="flex w-full flex-col items-center px-2 py-1 xl:flex-row xl:px-4 xl:py-2">
+        <form className="flex w-full flex-col items-center px-1 py-1 xl:flex-row xl:px-4 xl:py-2">
           <div className="flex w-full items-center rounded-lg bg-gray-50 px-3 py-2 xl:w-2/5">
             <MdSearch size={25} className="mr-2 text-gray-300" />
             <input
@@ -154,13 +178,27 @@ const Schools = () => {
             />
           </div>
           <div className="mt-2 flex w-full items-center justify-between xl:ml-auto xl:mt-0 xl:w-2/5  xl:justify-end">
+            {Object.keys(filterOptions).length ? (
+              <div
+                className={`flex cursor-pointer items-center rounded-lg  border-2 border-gray-200 px-1 py-1  text-[#71717a] xl:mr-3 xl:px-3 xl:py-1.5
+              `}
+                onClick={() => {
+                  setFilterOptions({});
+                }}
+              >
+                <p className="mr-1 text-sm xl:text-base">Clear</p>
+                <MdClear />
+              </div>
+            ) : null}
+
             <div
-              className="flex cursor-pointer items-center rounded-lg border-2 border-gray-200 px-3 py-1.5 text-[#71717a] xl:mr-3"
+              className={`flex cursor-pointer items-center rounded-lg  border-2 border-gray-200 px-1 py-1  text-[#71717a] xl:mr-3 xl:px-3 xl:py-1.5
+              `}
               onClick={() => {
                 setIsModalOpen(true);
               }}
             >
-              <p className="mr-1">Filter</p>
+              <p className="mr-1  text-sm xl:text-base ">Filter</p>
               <MdFilterList />
             </div>
             <div className=" xl:mr-4">
@@ -228,10 +266,19 @@ const Schools = () => {
             <ResponsivePagination
               current={currentPage}
               total={totalPages}
-              onPageChange={setCurrentPage}
+              onPageChange={(e) => {
+                setCurrentPage(e);
+                if (searchInput.length > 0) {
+                  SearchSchool(sortText);
+                } else {
+                  GetAllSchools(sortText);
+                }
+              }}
             />
           </div>
-        ) : !searching && searchResults.length === 0 && searched ? (
+        ) : !searching &&
+          searchResults.length === 0 &&
+          (searched || Object.keys(filterOptions).length > 0) ? (
           <div className="relative flex h-[600px] w-full flex-col items-center justify-center xl:h-[550px]">
             <button
               className=" absolute top-1 right-2 flex items-center rounded-xl bg-red-300 px-2 py-2 text-base font-medium text-white transition duration-200 hover:bg-red-500 active:bg-navy-900 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"

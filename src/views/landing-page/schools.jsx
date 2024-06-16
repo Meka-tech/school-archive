@@ -17,6 +17,8 @@ import "react-responsive-pagination/themes/classic.css";
 import { Dropdown, Modal, Spinner } from "flowbite-react";
 import Footer from "components/footer/Footer";
 import FilterModal from "components/modals/filterModal";
+import { FaSort } from "react-icons/fa";
+import { BsSortDown, BsSortUp } from "react-icons/bs";
 
 const Schools = () => {
   const state = useLocation().state;
@@ -32,6 +34,7 @@ const Schools = () => {
   const [sortText, setSortText] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterOptions, setFilterOptions] = useState({});
+  const [order, setOrder] = useState(-1);
 
   const [noResults, setNoResults] = useState(false);
 
@@ -53,20 +56,35 @@ const Schools = () => {
           sortOption = "";
       }
 
+      const filter = { ...filterOptions };
+
       const res = await axios.get(
         `${BaseUrl}/school?page=${currentPage}&limit=${limit}${
-          sort ? `&sort=${sortOption}` : ""
+          sort ? `&sort=${sortOption}&order=${order}` : ""
         }${
-          Object.keys(filterOptions).length > 0
-            ? `&filter=${JSON.stringify(filterOptions)}`
+          filter.foundingYear
+            ? `&foundingYear=${JSON.stringify(filter.foundingYear)}`
+            : ""
+        } ${
+          filter.studentBoarding
+            ? `&hasBoarding=${JSON.stringify(filter.studentBoarding)}`
+            : ""
+        } ${
+          filter.securityGuard
+            ? `&hasGuard=${JSON.stringify(filter.securityGuard)}`
+            : ""
+        }${
+          filter.educationLevels?.length > 0
+            ? `&educationLevels=${JSON.stringify(filter.educationLevels)}`
             : ""
         }`
       );
+
       setSearched(false);
       setSearchResults(res.data.results);
-
       setTotalPages(res.data.totalPages);
     } catch (e) {
+      console.error(e);
     } finally {
       setSearching(false);
     }
@@ -76,6 +94,7 @@ const Schools = () => {
     setSearching(true);
     setNoResults(false);
     setSearched(true);
+
     try {
       let sortOption;
       switch (sort) {
@@ -92,12 +111,26 @@ const Schools = () => {
           sortOption = "";
       }
 
+      const filter = { ...filterOptions };
+
       const res = await axios.get(
         `${BaseUrl}/school/search?search=${searchInput}&page=${currentPage}&limit=${limit}${
-          sort ? `&sort=${sortOption}` : ""
+          sort ? `&sort=${sortOption}&order=${order}` : ""
         }${
-          Object.keys(filterOptions).length > 0
-            ? `&filter=${filterOptions}`
+          filter.foundingYear
+            ? `&foundingYear=${JSON.stringify(filter.foundingYear)}`
+            : ""
+        } ${
+          filter.studentBoarding
+            ? `&hasBoarding=${JSON.stringify(filter.studentBoarding)}`
+            : ""
+        } ${
+          filter.securityGuard
+            ? `&hasGuard=${JSON.stringify(filter.securityGuard)}`
+            : ""
+        }${
+          filter.educationLevels?.length > 0
+            ? `&educationLevels=${JSON.stringify(filter.educationLevels)}`
             : ""
         }`
       );
@@ -117,6 +150,7 @@ const Schools = () => {
     setSortText("");
     setSearchInput("");
     setFilterOptions({});
+    setOrder(-1);
     GetAllSchools(sortText);
   };
 
@@ -131,7 +165,9 @@ const Schools = () => {
   };
 
   useEffect(() => {
-    if (!input) GetAllSchools();
+    if (!input) {
+      GetAllSchools();
+    }
   }, []);
 
   useEffect(() => {
@@ -146,9 +182,8 @@ const Schools = () => {
     } else {
       GetAllSchools(sortText);
     }
-  }, [filterOptions]);
+  }, [filterOptions, order, currentPage]);
 
-  console.log(searchResults);
   return (
     <main className="bg-white">
       <LandingPageNav />
@@ -177,49 +212,85 @@ const Schools = () => {
               type="search"
             />
           </div>
-          <div className="mt-2 flex w-full items-center justify-between xl:ml-auto xl:mt-0 xl:w-2/5  xl:justify-end">
-            {Object.keys(filterOptions).length ? (
+          <div className="mt-2 flex w-full flex-wrap items-center justify-between gap-y-2 xl:ml-auto xl:mt-0 xl:w-2/5  xl:justify-end">
+            <div className="flex items-center">
+              {Object.keys(filterOptions).length ? (
+                <div
+                  className={`mr-2 flex cursor-pointer items-center rounded-lg  border-2 border-gray-200 px-1 py-1  text-[#71717a] xl:mr-3 xl:px-3 xl:py-1.5
+              `}
+                  onClick={() => {
+                    setFilterOptions({});
+                  }}
+                >
+                  <p className="mr-1 text-sm xl:text-base">Clear</p>
+                  <MdClear />
+                </div>
+              ) : null}
+
               <div
                 className={`flex cursor-pointer items-center rounded-lg  border-2 border-gray-200 px-1 py-1  text-[#71717a] xl:mr-3 xl:px-3 xl:py-1.5
               `}
                 onClick={() => {
-                  setFilterOptions({});
+                  setIsModalOpen(true);
                 }}
               >
-                <p className="mr-1 text-sm xl:text-base">Clear</p>
-                <MdClear />
+                <p className="mr-1  text-sm xl:text-base ">Filter</p>
+                <MdFilterList />
               </div>
-            ) : null}
-
-            <div
-              className={`flex cursor-pointer items-center rounded-lg  border-2 border-gray-200 px-1 py-1  text-[#71717a] xl:mr-3 xl:px-3 xl:py-1.5
-              `}
-              onClick={() => {
-                setIsModalOpen(true);
-              }}
-            >
-              <p className="mr-1  text-sm xl:text-base ">Filter</p>
-              <MdFilterList />
             </div>
-            <div className=" xl:mr-4">
-              <Dropdown
-                label={sortText ? `sort by: ${sortText}` : "Sort"}
-                dismissOnClick={true}
-                size="sm"
-                style={{ background: "transparent", color: "gray" }}
-              >
-                <Dropdown.Item onClick={() => SetSorting("Recently Updated")}>
-                  Recently Updated
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => SetSorting("Founding Year")}>
-                  latest founding year
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() => SetSorting("Latest Inspection Date")}
+
+            <div className="flex items-center">
+              <div className=" mr-2 xl:mr-4">
+                <Dropdown
+                  label={sortText ? `sort by: ${sortText}` : "Sort"}
+                  dismissOnClick={true}
+                  size="sm"
+                  style={{ background: "transparent", color: "gray" }}
                 >
-                  latest inspection date
-                </Dropdown.Item>
-              </Dropdown>
+                  <Dropdown.Item onClick={() => SetSorting("Recently Updated")}>
+                    Recently Updated
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => SetSorting("Founding Year")}>
+                    latest founding year
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => SetSorting("Latest Inspection Date")}
+                  >
+                    latest inspection date
+                  </Dropdown.Item>
+                </Dropdown>
+              </div>
+              {sortText && (
+                <div className="mr-4">
+                  <Dropdown
+                    label={
+                      order === -1 ? <BsSortDown /> : <BsSortUp size={20} />
+                    }
+                    dismissOnClick={true}
+                    size="sm"
+                    style={{
+                      background: "transparent",
+                      color: "gray",
+                      width: "fit",
+                    }}
+                  >
+                    <Dropdown.Item
+                      onClick={() => {
+                        setOrder(1);
+                      }}
+                    >
+                      Ascending Order
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => {
+                        setOrder(-1);
+                      }}
+                    >
+                      Descending Order
+                    </Dropdown.Item>
+                  </Dropdown>
+                </div>
+              )}
             </div>
             <button
               type="submit"
@@ -249,7 +320,7 @@ const Schools = () => {
                   Page {currentPage} of {totalPages}
                 </span>
               </p>
-              {searched && (
+              {(searched || sortText) && (
                 <button
                   className="flex items-center rounded-xl bg-red-300 px-2 py-2 text-base font-medium text-white transition duration-200 hover:bg-red-500 active:bg-navy-900 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/30"
                   onClick={CancelSearch}

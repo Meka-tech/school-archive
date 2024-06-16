@@ -7,7 +7,7 @@ const SchoolCard = ({ name, location, email, telephone, id, variant }) => {
   const navigate = useNavigate();
   return (
     <Card
-      extra={`flex flex-col w-full  !p-4 3xl:p-![18px] bg-white cursor-pointer  h-fit`}
+      extra={`flex flex-col w-full  !p-4 3xl:p-![18px] bg-white cursor-pointer  h-fit shadow-md`}
       onClick={() => navigate("/admin/school", { state: { id } })}
     >
       <div className="flex items-center">

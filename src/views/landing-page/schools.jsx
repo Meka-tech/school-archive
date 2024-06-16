@@ -212,7 +212,7 @@ const Schools = () => {
               type="search"
             />
           </div>
-          <div className="mt-2 flex w-full flex-wrap items-center justify-between gap-y-2 xl:ml-auto xl:mt-0 xl:w-2/5  xl:justify-end">
+          <div className="mt-2 flex w-full flex-wrap items-center gap-y-2 xl:ml-auto xl:mt-0 xl:w-2/5  xl:justify-end">
             <div className="flex items-center">
               {Object.keys(filterOptions).length ? (
                 <div
@@ -228,7 +228,7 @@ const Schools = () => {
               ) : null}
 
               <div
-                className={`flex cursor-pointer items-center rounded-lg  border-2 border-gray-200 px-1 py-1  text-[#71717a] xl:mr-3 xl:px-3 xl:py-1.5
+                className={`mr-2 flex cursor-pointer items-center  rounded-lg border-2 border-gray-200 px-1 py-1  text-[#71717a] xl:mr-3 xl:px-3 xl:py-1.5
               `}
                 onClick={() => {
                   setIsModalOpen(true);
@@ -264,7 +264,11 @@ const Schools = () => {
                 <div className="mr-4">
                   <Dropdown
                     label={
-                      order === -1 ? <BsSortDown /> : <BsSortUp size={20} />
+                      order === -1 ? (
+                        <BsSortDown size={20} />
+                      ) : (
+                        <BsSortUp size={20} />
+                      )
                     }
                     dismissOnClick={true}
                     size="sm"

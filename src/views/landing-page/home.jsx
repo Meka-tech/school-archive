@@ -141,7 +141,7 @@ const Home = () => {
         <h2 className="text-center text-3xl font-bold text-white  xl:text-4xl">
           Read Latest Blog Posts
         </h2>
-        <div className=" relative z-10 ml-auto mr-auto mt-24  flex w-10/12  grid-cols-3 flex-col items-center justify-center gap-y-6 xl:grid xl:w-9/12 xl:gap-x-20">
+        <div className=" relative z-10 ml-auto mr-auto mt-24  flex w-10/12  grid-cols-3 flex-col items-center justify-center gap-y-6 xl:grid xl:w-10/12 xl:gap-x-20">
           {blogLoading ? (
             <>
               <BlogCardLoading />

@@ -55,7 +55,7 @@ const BlogCard = ({ data }) => {
         />
       </div>
       <div className="flex h-3/5 w-full flex-col  px-4 py-3">
-        <p className="text-xl font-extrabold">{title}</p>
+        <p className="text-xl font-extrabold"> {shortenText(title, 50)}</p>
         <p className="mt-2 text-sm font-medium">{summary}</p>
         <div className="mt-auto flex w-full items-center justify-between">
           <div className="flex items-center">

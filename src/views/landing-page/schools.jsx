@@ -185,7 +185,7 @@ const Schools = () => {
   }, [filterOptions, order, currentPage]);
 
   return (
-    <main className="bg-white">
+    <main className="flex min-h-screen flex-col bg-white">
       <LandingPageNav />
       <Modal
         show={isModalOpen}

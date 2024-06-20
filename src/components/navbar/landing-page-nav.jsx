@@ -48,7 +48,18 @@ const LandingPageNav = () => {
           >
             <p className="font-poppins font-medium text-[#065f46]">Schools</p>
             <ActiveBar
-              hover={path === "/schools" || activeHover === "schools"}
+              hover={path.includes("/school") || activeHover === "schools"}
+            />
+          </div>
+          <div
+            className="relative mr-10 cursor-pointer"
+            onMouseEnter={() => setActiveHover("blog")}
+            onMouseLeave={() => setActiveHover("")}
+            onClick={() => navigate("/blog")}
+          >
+            <p className="font-poppins font-medium text-[#065f46]">Blog</p>
+            <ActiveBar
+              hover={path.includes("/blog") || activeHover === "blog"}
             />
           </div>
         </div>
@@ -76,6 +87,14 @@ const LandingPageNav = () => {
           >
             <p className="text-center font-poppins font-medium text-[#065f46]">
               Schools
+            </p>
+          </div>
+          <div
+            onClick={() => navigate("/blog")}
+            className="w-full cursor-pointer border-b-2 border-gray-50 py-3"
+          >
+            <p className="text-center font-poppins font-medium text-[#065f46]">
+              Blog
             </p>
           </div>
         </Modal.Body>

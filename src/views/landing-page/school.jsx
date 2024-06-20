@@ -64,7 +64,7 @@ const School = () => {
   };
 
   return (
-    <main className="bg-white">
+    <main className="flex min-h-screen flex-col bg-white">
       <LandingPageNav />
       <div className="relative ml-auto mr-auto mt-5 h-fit min-h-screen w-full rounded-xl bg-white px-3 xl:py-10  xl:px-20 ">
         {loading && (

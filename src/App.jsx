@@ -7,6 +7,9 @@ import AuthLayout from "layouts/auth";
 import Home from "views/landing-page/home";
 import Schools from "views/landing-page/schools";
 import School from "views/landing-page/school";
+import Blog from "views/landing-page/blog";
+import Blogs from "views/landing-page/blogs";
+
 const App = () => {
   return (
     <Routes>
@@ -16,6 +19,8 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/schools" element={<Schools />} />
       <Route path="/school" element={<School />} />
+      <Route path="/blog" element={<Blogs />} />
+      <Route path="/blog/:id" element={<Blog />} />
     </Routes>
   );
 };

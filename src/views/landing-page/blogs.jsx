@@ -40,7 +40,10 @@ const Blogs = () => {
         <h1 className="text-center text-3xl font-extrabold text-[#065f46] xl:text-[40px]">
           From Our Blog
         </h1>
-        <div className=" relative z-10 ml-auto mr-auto mt-10 flex  w-10/12 grid-cols-3  flex-col items-center justify-center gap-y-6 xl:mt-16 xl:grid xl:w-10/12 xl:gap-x-20">
+        <div
+          className=" relative z-10 ml-auto mr-auto mt-10 flex  w-10/12 grid-cols-3  flex-col items-center justify-center gap-y-6 xl:mt-16 xl:grid xl:w-10/12 xl:gap-x-20"
+          data-aos="fade-right"
+        >
           {blogLoading ? (
             <>
               <BlogCardLoading />

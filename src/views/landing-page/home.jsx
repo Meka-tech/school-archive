@@ -42,7 +42,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="flex min-h-screen w-full flex-col bg-white ">
+    <main className="flex min-h-screen w-full flex-col overflow-x-hidden bg-white ">
       <LandingPageNav />
       <div className="relative flex h-[650px] w-full xl:h-[600px]">
         <div className="absolute top-0 flex  h-full w-full  bg-[#022c22]">
@@ -65,7 +65,7 @@ const Home = () => {
                 administration.
               </p>
             </div>
-            <form className="mt-10 flex h-fit w-full items-center justify-between rounded-lg border-solid border-white bg-white px-2 py-3 shadow-xl duration-100 ease-in xl:mt-10 xl:w-6/12 xl:px-4  ">
+            <form className="mt-10 flex h-fit w-full items-center justify-between rounded-lg border-solid border-white bg-white px-2 py-3 shadow-xl duration-100 ease-in xl:mt-10 xl:w-6/12 xl:px-4">
               <input
                 placeholder="Search Schools..."
                 className=" ml-1 w-11/12 text-sm placeholder:text-gray-400  xl:ml-2  xl:text-lg"
@@ -85,11 +85,17 @@ const Home = () => {
         </div>
       </div>
       <div className="relative bg-white py-20 xl:py-40">
-        <h2 className="text-center text-3xl font-bold text-[#065f46]  xl:text-4xl">
+        <h2
+          className="text-center text-3xl font-bold text-[#065f46]  xl:text-4xl"
+          data-aos="fade-left"
+        >
           Features
         </h2>
         <div className="relative z-10 ml-auto mr-auto mt-24 grid w-9/12 grid-cols-1 items-center justify-center gap-y-8 gap-x-10 xl:grid-cols-3">
-          <div className="flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white px-4 py-6 shadow-2xl xl:h-full xl:px-6 xl:py-10">
+          <div
+            className="flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white px-4 py-6 shadow-2xl xl:h-full xl:px-6 xl:py-10"
+            data-aos="fade-left"
+          >
             <div className="mb-2 flex items-center justify-center rounded-full bg-[#d1fae5] p-2 xl:mb-5">
               <MdSearch size={25} className="text-[#10b981]" />
             </div>
@@ -102,7 +108,10 @@ const Home = () => {
               identifier efficiently.
             </p>
           </div>
-          <div className="flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white px-4 py-5 shadow-2xl xl:h-full xl:px-6 xl:py-10">
+          <div
+            className="flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white px-4 py-5 shadow-2xl xl:h-full xl:px-6 xl:py-10"
+            data-aos="fade-left"
+          >
             <div className="mb-2 flex items-center justify-center rounded-full bg-[#cffafe] p-2 xl:mb-5">
               <MdLibraryBooks size={25} className="text-[#06b6d4]" />
             </div>
@@ -114,7 +123,10 @@ const Home = () => {
               staff data and lots more of a schools
             </p>
           </div>
-          <div className=" flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white py-5 px-4 shadow-2xl xl:h-full xl:px-6 xl:py-10">
+          <div
+            className=" flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white py-5 px-4 shadow-2xl xl:h-full xl:px-6 xl:py-10"
+            data-aos="fade-left"
+          >
             <div className="mb-2 flex items-center justify-center rounded-full bg-[#ffe4e6] p-2 xl:mb-5">
               <FaBloggerB size={25} className="text-[#f43f5e]" />
             </div>
@@ -138,10 +150,16 @@ const Home = () => {
         </div>
       </div>
       <div className="relative mb-20  flex w-full flex-col bg-[#065f46] pb-20 pt-16 xl:pb-40">
-        <h2 className="text-center text-3xl font-bold text-white  xl:text-4xl">
+        <h2
+          className="text-center text-3xl font-bold text-white  xl:text-4xl"
+          data-aos="fade-right"
+        >
           Read Latest Blog Posts
         </h2>
-        <div className=" relative z-10 ml-auto mr-auto mt-24  flex w-10/12  grid-cols-3 flex-col items-center justify-center gap-y-6 xl:grid xl:w-10/12 xl:gap-x-20">
+        <div
+          className=" relative z-10 ml-auto mr-auto mt-24  flex w-10/12  grid-cols-3 flex-col items-center justify-center gap-y-6 xl:grid xl:w-10/12 xl:gap-x-20"
+          data-aos="fade-right"
+        >
           {blogLoading ? (
             <>
               <BlogCardLoading />
@@ -157,9 +175,12 @@ const Home = () => {
             })
           ) : null}
         </div>
-        <div className="z-10 mt-10 ml-auto mr-auto flex w-10/12 items-center justify-end text-white   xl:w-9/12   xl:text-[#065f46]">
+        <div
+          className="z-10 mt-10 ml-auto mr-auto flex w-10/12 items-center justify-end text-white   xl:w-9/12   xl:text-[#065f46]"
+          data-aos="fade-right"
+        >
           <a className="flex" href="/blog">
-            <p className="mr-1 text-lg font-extrabold">More Posts</p>
+            <p className="mr-1 text-lg font-extrabold ">More Posts</p>
             <IoMdArrowForward className="text-xl xl:text-2xl " />
           </a>
         </div>

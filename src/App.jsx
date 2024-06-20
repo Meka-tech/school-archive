@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import RtlLayout from "layouts/rtl";
@@ -9,8 +9,13 @@ import Schools from "views/landing-page/schools";
 import School from "views/landing-page/school";
 import Blog from "views/landing-page/blog";
 import Blogs from "views/landing-page/blogs";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const App = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1500, once: true });
+  }, []);
   return (
     <Routes>
       <Route path="auth/*" element={<AuthLayout />} />

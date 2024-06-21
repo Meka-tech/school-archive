@@ -13,6 +13,7 @@ const AddSchool = () => {
   const [studentBoarding, setStudentBoarding] = useState(false);
   const [securityGuard, setSecurityGuard] = useState(false);
   const [educationLevels, setEducationLevels] = useState([]);
+  const [educationLevelError, setEducationLevelError] = useState(false);
   const navigate = useNavigate();
 
   const SchoolSchema = Yup.object().shape({
@@ -62,6 +63,7 @@ const AddSchool = () => {
         validationSchema={SchoolSchema}
         onSubmit={async (values) => {
           setLoading(true);
+          setEducationLevelError(false);
           const data = {
             ...values,
             latestDateOfInspection: new Date(
@@ -72,6 +74,10 @@ const AddSchool = () => {
             educationLevels,
           };
 
+          if (educationLevels.length === 0) {
+            setEducationLevelError(true);
+            return;
+          }
           try {
             const response = await axios.post(`${BaseUrl}/school`, data);
 
@@ -173,6 +179,11 @@ const AddSchool = () => {
                     Secondary
                   </Dropdown.Item>
                 </Dropdown>
+                {educationLevelError && (
+                  <p className="absolute -bottom-5 text-xs text-red-500">
+                    Education Levels Required !
+                  </p>
+                )}
               </div>
 
               <InputField

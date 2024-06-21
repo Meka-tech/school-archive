@@ -426,7 +426,11 @@ const School = () => {
             >
               Add
               {creatingNewSession ? (
-                <Spinner aria-label="Spinner button example" size="sm" />
+                <Spinner
+                  aria-label="Spinner button example"
+                  size="sm"
+                  className="ml-1"
+                />
               ) : (
                 <MdAdd />
               )}

@@ -91,7 +91,7 @@ const Home = () => {
         >
           Features
         </h2>
-        <div className="relative z-10 ml-auto mr-auto mt-24 grid w-9/12 grid-cols-1 items-center justify-center gap-y-8 gap-x-10 xl:grid-cols-3">
+        <div className="relative z-10 ml-auto mr-auto mt-12 grid w-10/12 grid-cols-1 items-center justify-center gap-y-8 gap-x-10 xl:mt-24 xl:w-9/12 xl:grid-cols-3">
           <div
             className="flex h-60 w-full flex-col items-center justify-center rounded-xl bg-white px-4 py-6 shadow-2xl xl:h-full xl:px-6 xl:py-10"
             data-aos="fade-left"
@@ -139,7 +139,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 z-0 w-full">
+        <div className="absolute -bottom-1 left-0 z-0 w-full">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
               fill="#065f46"
@@ -157,7 +157,7 @@ const Home = () => {
           Read Latest Blog Posts
         </h2>
         <div
-          className=" relative z-10 ml-auto mr-auto mt-24  flex w-10/12  grid-cols-3 flex-col items-center justify-center gap-y-6 xl:grid xl:w-10/12 xl:gap-x-20"
+          className=" relative z-10 ml-auto mr-auto mt-12 flex  w-10/12 grid-cols-3  flex-col items-center justify-center gap-y-6 xl:mt-24 xl:grid xl:w-10/12 xl:gap-x-20"
           data-aos="fade-right"
         >
           {blogLoading ? (
@@ -176,15 +176,15 @@ const Home = () => {
           ) : null}
         </div>
         <div
-          className="z-10 mt-10 ml-auto mr-auto flex w-10/12 items-center justify-end text-white   xl:w-9/12   xl:text-[#065f46]"
+          className="z-10 mt-8 ml-auto mr-auto flex w-10/12 items-center justify-end text-white xl:mt-10   xl:w-9/12   xl:text-[#065f46]"
           data-aos="fade-right"
         >
-          <a className="flex" href="/blog">
+          <a className="flex items-center" href="/blog">
             <p className="mr-1 text-lg font-extrabold ">More Posts</p>
             <IoMdArrowForward className="text-xl xl:text-2xl " />
           </a>
         </div>
-        <div className="absolute left-0 bottom-0 w-full">
+        <div className="absolute left-0 -bottom-1 w-full">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
               fill="white"

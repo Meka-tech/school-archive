@@ -81,19 +81,23 @@ const BlogCard = ({ data }) => {
 
 export const BlogCardLoading = () => {
   return (
-    <div className="h-96 w-full overflow-hidden rounded-3xl bg-gray-300 shadow-xl">
-      <div className="h-2/5 w-full animate-pulse bg-gray-500"></div>
+    <div className="h-96 w-full overflow-hidden rounded-3xl bg-gray-200 shadow-xl">
+      <div className="h-2/5 w-full animate-pulse bg-gray-300"></div>
       <div className="flex h-3/5 w-full flex-col px-4 py-3 ">
-        <div className="mt-2 h-4 w-full animate-pulse rounded-full bg-gray-500"></div>
-        <div className="mt-6 h-2 w-full animate-pulse rounded-full bg-gray-500"></div>
-        <div className="mt-2 h-2 w-10/12 animate-pulse rounded-full bg-gray-500"></div>
-        <div className="mt-2 h-2 w-11/12 animate-pulse rounded-full bg-gray-500"></div>
-        <div className="mt-2 h-2 w-1/2 animate-pulse rounded-full bg-gray-500"></div>
-        <div className="mt-2 h-2 w-full animate-pulse rounded-full bg-gray-500"></div>
+        <div className="mt-2 h-4 w-full animate-pulse rounded-full bg-gray-300"></div>
+        <div className="mt-6 h-2 w-full animate-pulse rounded-full bg-gray-300"></div>
+        <div className="mt-2 h-2 w-10/12 animate-pulse rounded-full bg-gray-300"></div>
+        <div className="mt-2 h-2 w-11/12 animate-pulse rounded-full bg-gray-300"></div>
+        <div className="mt-2 h-2 w-1/2 animate-pulse rounded-full bg-gray-300"></div>
+        <div className="mt-2 h-2 w-full animate-pulse rounded-full bg-gray-300"></div>
 
         <div className="mt-auto flex items-center justify-between">
-          <div className="mt-4 h-2 w-2/5 animate-pulse rounded-full bg-gray-500"></div>
-          <div className="mt-4 h-2 w-2/5 animate-pulse rounded-full bg-gray-500"></div>
+          <div className="flex w-1/2 items-center ">
+            <div className="mr-1 flex h-8 w-8 animate-pulse  items-center justify-center rounded-full bg-gray-300 "></div>
+            <div className="h-2 w-3/5 animate-pulse rounded-full bg-gray-300"></div>
+          </div>
+
+          <div className=" h-2 w-2/5 animate-pulse rounded-full bg-gray-300"></div>
         </div>
       </div>
     </div>

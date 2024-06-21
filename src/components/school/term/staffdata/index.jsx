@@ -37,6 +37,7 @@ const StaffData = ({ data, update }) => {
               value={staffdata.teaching_staffs}
               name="teaching_staffs"
               onChange={handleChange}
+              type="number"
             />
           </div>
           <div className="mr-4 flex items-center justify-between xl:justify-start ">
@@ -47,6 +48,7 @@ const StaffData = ({ data, update }) => {
               className="w-14 rounded-lg border-2 border-solid border-navy-50 px-1 py-1 text-center font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none "
               value={staffdata.non_teaching_staffs}
               onChange={handleChange}
+              type="number"
               name="non_teaching_staffs"
             />
           </div>
@@ -58,6 +60,7 @@ const StaffData = ({ data, update }) => {
               className="w-14 rounded-lg border-2 border-solid border-navy-50 px-1 py-1 text-center font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none "
               value={staffdata.permanent_staffs}
               onChange={handleChange}
+              type="number"
               name="permanent_staffs"
             />
           </div>
@@ -69,6 +72,7 @@ const StaffData = ({ data, update }) => {
               className="w-14 rounded-lg border-2 border-solid border-navy-50 px-1 py-1 text-center font-semibold text-navy-900 focus:bg-navy-50 focus:outline-none "
               value={staffdata.contract_staffs}
               onChange={handleChange}
+              type="number"
               name="contract_staffs"
             />
           </div>

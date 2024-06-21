@@ -92,7 +92,7 @@ const StaffList = ({ data }) => {
                   scope="col"
                   className="px-1.5 py-1.5 xl:w-auto xl:px-6 xl:py-3"
                 >
-                  Salary
+                  Salary(₦)
                 </th>
                 <th
                   scope="col"
@@ -151,7 +151,9 @@ const StaffList = ({ data }) => {
                       <p className="w-24">{staff.area_of_employment}</p>
                     </td>
                     <td className="px-1.5 py-2 text-[#065f46] xl:px-6 xl:py-4">
-                      <p className="w-20">{staff.salary}</p>
+                      <p className="w-20">
+                        {Number(staff.salary).toLocaleString()}
+                      </p>
                     </td>
                     <td className="px-1.5 py-2 text-[#065f46] xl:px-6 xl:py-4">
                       <div className="w-20">

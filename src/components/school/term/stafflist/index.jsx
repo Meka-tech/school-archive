@@ -112,7 +112,7 @@ const StaffList = ({ data, update }) => {
                   scope="col"
                   className="px-1.5 py-1.5 xl:w-auto xl:px-3 xl:py-3"
                 >
-                  Salary
+                  Salary(₦)
                 </th>
                 <th
                   scope="col"

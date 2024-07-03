@@ -134,8 +134,8 @@ const Home = () => {
               Blog System
             </p>
             <p className="text-center">
-              An integrated blog system will allow users to read and engage with
-              posts, fostering communication and community engagement
+              An integrated blog system will allow students to read lecture
+              notes with ease
             </p>
           </div>
         </div>
